@@ -53,8 +53,10 @@ const PROJECTS = [
     url: "/relay/",
     preview: "assets/previews/relay.webp",
     description: "An AI notepad for drafting, with in-place editing.",
-    team: "",
-    result: "Never launched",
+    team: "Solo",
+    result:
+      "Built the site and a working prototype, used it myself. Never " +
+      "launched — Claude's MCP support made it obsolete.",
     skills: ["TypeScript", "Next.js", "Python", "Anthropic API", "LangChain", "Vector search"],
   },
   {
