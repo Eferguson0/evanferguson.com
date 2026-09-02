@@ -20,6 +20,15 @@
   ].join("");
 
   /* ------------------------------------------------------------ timeline */
+  // Rail shows the start year, with the end year (or "now") beneath it when
+  // the project didn't begin and end in the same year.
+  const railLines = (p) => {
+    const a = p.start.slice(0, 4);
+    if (!p.end) return [a, "\u2013now"];
+    const b = p.end.slice(0, 4);
+    return b === a ? [a] : [a, "\u2013" + b];
+  };
+
   const preview = (p) => {
     const inner = p.preview
       ? `<img src="${esc(p.preview)}" alt="${esc(p.title)}" loading="lazy" decoding="async">`
@@ -30,17 +39,36 @@
       : `<div class="${cls}">${inner}</div>`;
   };
 
-  // Rail shows the start year, with the end year (or "now") beneath it when
-  // the project didn't begin and end in the same year.
-  const railLines = (p) => {
-    const a = p.start.slice(0, 4);
-    if (!p.end) return [a, "\u2013now"];
-    const b = p.end.slice(0, 4);
-    return b === a ? [a] : [a, "\u2013" + b];
-  };
+  const ordered = [...PROJECTS].sort((a, b) => b.start.localeCompare(a.start));
 
-  $("timeline").innerHTML = [...PROJECTS]
-    .sort((a, b) => b.start.localeCompare(a.start))   // newest first
+  // Current work is lifted out of the timeline so it reads as a business
+  // rather than as one more row. Everything else stays chronological.
+  const featured = ordered.find((p) => p.feature);
+  const rest = ordered.filter((p) => p !== featured);
+
+  if (featured) {
+    // The stacked rail format doesn't suit a single inline line here.
+    const startYear = featured.start.slice(0, 4);
+    const dates = featured.end
+      ? `${startYear}\u2013${featured.end.slice(0, 4)}`
+      : `Since ${startYear}`;
+    $("current").innerHTML = `
+      <div class="current-meta">
+        <span class="label">Currently</span>
+        <span class="current-dates">${dates}</span>
+      </div>
+      <h2>${featured.url
+        ? `<a href="${esc(featured.url)}" rel="noopener">${esc(featured.title)}</a>`
+        : esc(featured.title)}</h2>
+      <p>${esc(featured.summary)}</p>
+      ${preview(featured)}
+      <div class="skills">${featured.skills
+        .map((k) => `<span>${esc(k)}</span>`).join("")}</div>`;
+    $("current").hidden = false;
+    $("timelineHead").hidden = false;
+  }
+
+  $("timeline").innerHTML = rest
     .map((p) => `
       <article class="entry reveal">
         <div class="entry-year">${railLines(p)

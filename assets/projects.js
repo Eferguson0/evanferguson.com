@@ -11,6 +11,8 @@
                           hatched placeholder card
    summary   string     — 1–3 sentences. What it was and why it existed.
    skills    array      — rendered small and grey under the preview
+   feature   boolean    — optional. Lifts the entry out of the timeline into
+                          its own block above it, for current work.
 
    Seasons map to months: spring 04, summer 07, fall 10, winter 01.
 --------------------------------------------------------------------------- */
@@ -89,6 +91,9 @@ const PROJECTS = [
   {
     start: "2026-04",
     end: null,
+    // `feature: true` lifts an entry out of the timeline into its own block
+    // above it. Remove this line and it drops back in as a normal entry.
+    feature: true,
     title: "Ferguson Applied AI",
     url: "https://fergusonappliedai.com",
     preview: "assets/previews/faai.png",
