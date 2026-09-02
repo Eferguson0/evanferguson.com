@@ -40,10 +40,10 @@ const PROJECTS = [
       "from. Co-founded and incorporated it, interviewed 200+ consumers, won " +
       "funding from SDSU's Lavin Seed Fund, and recruited a technical " +
       "co-founder to build it.",
-    skills: ["Co-founding", "Customer discovery", "Fundraising", "Brand", "Product design"],
+    skills: ["Co-founding", "Customer discovery", "Fundraising", "Recruiting", "Brand"],
   },
   {
-    // TODO(Evan): dates inferred from the Drive folder (Feb–Apr 2025) — confirm.
+    // Dates from the Drive folder (Feb–Apr 2025).
     start: "2025-02",
     end: "2025-04",
     title: "Relay",
@@ -55,7 +55,7 @@ const PROJECTS = [
       "any passage, say what should change, and it revises, no copy-pasting " +
       "back into a chat window. It learned your voice per channel and applied " +
       "it to each new draft. Never launched publicly.",
-    skills: ["TypeScript", "LLM APIs", "MCP", "Product", "PMF research"],
+    skills: ["TypeScript", "Next.js", "Python", "Anthropic API", "LangChain", "Vector search"],
   },
   {
     start: "2025-04",
@@ -68,7 +68,7 @@ const PROJECTS = [
       "rewrites your resume against that specific role — split-screen, with " +
       "inline editing on one side and a chat assistant on the other. Ran a " +
       "pilot with a waitlist of early-career job seekers.",
-    skills: ["LLM APIs", "Product", "User research", "Pricing"],
+    skills: ["LLM APIs", "Resume parsing", "User research", "Pricing", "Product"],
   },
   {
     start: "2025-07",
@@ -82,8 +82,7 @@ const PROJECTS = [
       "burn pulled from Apple Health. Shipped to the App Store with a " +
       "subscription tier and an AI assistant that can answer questions " +
       "against your own data.",
-    // TODO(Evan): confirm — inferred from the repos and the landing page.
-    skills: ["Swift", "HealthKit", "Backend API", "Postgres", "Render", "App Store"],
+    skills: ["Swift", "SwiftUI", "HealthKit", "FastAPI", "PostgreSQL", "Docker", "OpenAI API"],
   },
   {
     start: "2026-04",
@@ -95,7 +94,6 @@ const PROJECTS = [
       "AI implementation consulting. A workflow audit to find where AI " +
       "actually pays off, then end-to-end system configuration, then training " +
       "and handoff so the team keeps running it without me.",
-    // TODO(Evan): confirm.
-    skills: ["AI implementation", "Workflow design", "Consulting", "Web"],
+    skills: ["AI implementation", "Workflow audit", "Training & enablement", "Client delivery"],
   },
 ];
