@@ -40,7 +40,7 @@ const PROJECTS = [
     preview: "assets/previews/flyerz.webp",
     description: "Restaurant discovery based on photos from friends, not reviews.",
     team: "4: myself, co-founder, designer, engineer",
-    result: "50+ user interviews, $10k funding, recruited team of 3",
+    result: "50+ user interviews, $10k funding, built team to 4",
     skills: ["Co-founding", "Incorporation", "Customer discovery", "Pitching", "Recruiting", "Management"],
   },
   {
@@ -53,9 +53,9 @@ const PROJECTS = [
     description: "An AI notepad for drafting, with in-place editing.",
     team: "Solo",
     result:
-      "Developed for personal use — abandoned once Claude rolled out MCP " +
-      "support",
-    skills: ["TypeScript", "Next.js", "Python", "Supabase", "Anthropic API", "LangChain", "Vector search"],
+      "Developed prototype, implemented memory system — used until Claude " +
+      "rolled out MCP support & made this tool obsolete",
+    skills: ["TypeScript", "Next.js", "Python", "Supabase", "Anthropic API", "Agent memory", "LangChain", "Vector search"],
   },
   {
     start: "2025-04",
