@@ -50,11 +50,11 @@ const PROJECTS = [
     url: "/relay/",
     preview: "assets/previews/relay.png",
     summary:
-      "A cross-channel messaging assistant for Slack and email. You type a " +
-      "short instruction — \"follow up with the client\" — and Relay reads the " +
-      "open thread, infers the recipient and subject, and returns a " +
-      "ready-to-send draft, with a refinement loop for tone and length. Never " +
-      "launched publicly.",
+      "An AI notepad for drafting. Hand it context — notes, message threads, " +
+      "documents — and it writes a first draft, then you edit in place: select " +
+      "any passage, say what should change, and it revises, no copy-pasting " +
+      "back into a chat window. It learned your voice per channel and applied " +
+      "it to each new draft. Never launched publicly.",
     skills: ["TypeScript", "LLM APIs", "MCP", "Product", "PMF research"],
   },
   {
