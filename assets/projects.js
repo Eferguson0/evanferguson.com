@@ -50,7 +50,7 @@ const PROJECTS = [
     title: "Relay",
     url: "/relay/",
     preview: "assets/previews/relay.webp",
-    description: "An AI notepad for drafting, with in-place editing.",
+    description: "Streamline communication with LLMs.",
     team: "Solo",
     result:
       "Developed prototype, implemented memory system — used until Claude " +
