@@ -8,8 +8,10 @@
 
   /* ------------------------------------------------------------ masthead */
   $("mastName").textContent = SITE.name;
-  $("tagline").textContent = SITE.tagline;
-  $("intro").textContent = SITE.intro;
+  if (SITE.intro) {
+    $("intro").textContent = SITE.intro;
+    $("intro").hidden = false;
+  }
   $("colophonName").textContent = `© ${new Date().getFullYear()} ${SITE.name}`;
 
   $("contactRow").innerHTML = [

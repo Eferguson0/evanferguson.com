@@ -12,10 +12,8 @@
 
 const SITE = {
   name: "Evan Ferguson",
-  tagline: "I build businesses and the software that runs them.",
-  intro:
-    "A decade of projects, oldest first. Some are companies, some are code, " +
-    "most are both.",
+  // Optional line under the name. Leave "" and nothing renders.
+  intro: "",
   email: "evan.ferguson0@gmail.com",
   links: [
     { label: "GitHub", href: "https://github.com/PLACEHOLDER" },
