@@ -303,7 +303,6 @@ a.preview:hover { border-color: var(--rule-strong); }
   border-top: 1px solid var(--rule);
   display: flex; flex-wrap: wrap; gap: 14px 28px;
 }
-.colophon .spacer { flex: 1; }
 
 /* ---------------------------------------------------------------- mobile */
 
