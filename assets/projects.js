@@ -37,10 +37,11 @@ const PROJECTS = [
       "Restaurant discovery for Gen Z built on photos, video and your own " +
       "social network instead of written reviews — the insight being that the " +
       "people you already trust are the ones you actually take recommendations " +
-      "from. Co-founded and incorporated it, interviewed 200+ consumers, won " +
-      "funding from SDSU's Lavin Seed Fund, and recruited a technical " +
-      "co-founder to build it.",
-    skills: ["Co-founding", "Incorporation", "Customer discovery", "Fundraising", "Recruiting", "Management", "Brand"],
+      "from. Co-founded and incorporated it, interviewed 200+ consumers, took " +
+      "it through SDSU's Lavin startup program and two rounds of review " +
+      "panels to a seed-fund award, and recruited a technical co-founder " +
+      "to build it.",
+    skills: ["Co-founding", "Incorporation", "Customer discovery", "Fundraising", "Recruiting", "Management"],
   },
   {
     // Dates from the Drive folder (Feb–Apr 2025).
