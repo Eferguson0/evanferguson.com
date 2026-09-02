@@ -40,7 +40,7 @@ const PROJECTS = [
       "from. Co-founded and incorporated it, interviewed 200+ consumers, won " +
       "funding from SDSU's Lavin Seed Fund, and recruited a technical " +
       "co-founder to build it.",
-    skills: ["Co-founding", "Customer discovery", "Fundraising", "Recruiting", "Management", "Brand"],
+    skills: ["Co-founding", "Incorporation", "Customer discovery", "Fundraising", "Recruiting", "Management", "Brand"],
   },
   {
     // Dates from the Drive folder (Feb–Apr 2025).
