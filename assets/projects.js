@@ -74,7 +74,7 @@ const PROJECTS = [
     title: "Supahealth",
     url: "https://supahealth-landing.onrender.com",
     preview: "assets/previews/supahealth.webp",
-        description: "An iOS fitness app that adjusts calorie targets daily.",
+        description: "Real-time body composition management.",
     team: "2: myself, security engineer",
     result: "15 users, frontend on TestFlight, backend on AWS",
     skills: ["Swift", "HealthKit", "FastAPI", "PostgreSQL", "External data sources", "OpenAI API", "AWS", "PostHog", "Claude Code"],
