@@ -47,8 +47,8 @@ const PROJECTS = [
     start: "2025-02",
     end: "2025-04",
     title: "Relay",
-    url: "",
-    preview: "",
+    url: "/relay/",
+    preview: "assets/previews/relay.png",
     summary:
       "A cross-channel messaging assistant for Slack and email. You type a " +
       "short instruction — \"follow up with the client\" — and Relay reads the " +

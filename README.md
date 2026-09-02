@@ -38,6 +38,29 @@ which matches the 16:10 crop the cards use. Then set
 Entries with no preview render a subtle hatched placeholder, so the page looks
 finished even while screenshots are still missing.
 
+## The Relay subpage
+
+`/relay` is a static export of the Relay landing page (a Next.js app) served
+from this repo, so it lives at `evanferguson.com/relay` rather than its own
+host. Only the **built output** is committed here — about 2.4 MB. The source is
+its own repo (`github.com/eferguson0/relay-landing`) and is gitignored.
+
+To rebuild after changing the Relay source:
+
+```bash
+./tools/build-relay.sh
+```
+
+Two things make the subpath work, and both must stay:
+
+- **`NEXT_BASE_PATH` / `NEXT_PUBLIC_BASE_PATH`** — `basePath` handles `<Link>`
+  and the `_next` bundles, but *not* `next/image` `src` (because
+  `images.unoptimized` is on) or the `icons` metadata. Those read
+  `NEXT_PUBLIC_BASE_PATH` explicitly in `app/page.tsx` and `app/layout.tsx`.
+- **`.nojekyll`** in the repo root — GitHub Pages runs Jekyll by default, and
+  Jekyll silently drops directories beginning with an underscore. Without this
+  file, `/relay/_next/` disappears and the page loads unstyled.
+
 ## Files
 
 | File | What it is |
@@ -46,6 +69,9 @@ finished even while screenshots are still missing.
 | `assets/style.css` | Design tokens and layout. Light and dark both defined |
 | `assets/site.js` | Renders the timeline from the data |
 | `tools/shoot.sh` | Screenshot helper for the preview cards |
+| `tools/build-relay.sh` | Rebuilds the Relay subpage into `/relay` |
+| `relay/` | Built Relay landing page (generated — don't hand-edit) |
+| `.nojekyll` | Stops GitHub Pages from dropping `/relay/_next/` |
 | `CNAME` | Custom domain for GitHub Pages |
 
 ## Local preview

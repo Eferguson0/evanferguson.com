@@ -16,8 +16,10 @@ OUT="$(cd "$(dirname "$0")/.." && pwd)/assets/previews/${SLUG}.png"
 
 [ -x "$CHROME" ] || { echo "Chrome not found at $CHROME" >&2; exit 1; }
 
+# --timeout waits in real time. --virtual-time-budget fires too early on
+# JS-heavy pages (Next/React), producing a blank capture.
 "$CHROME" --headless --disable-gpu --hide-scrollbars \
-  --virtual-time-budget=6000 \
+  --timeout="${SHOOT_WAIT_MS:-12000}" \
   --window-size=1440,900 \
   --screenshot="$OUT" "$URL" >/dev/null 2>&1
 

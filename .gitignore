@@ -3,3 +3,9 @@ node_modules/
 *.log
 .vscode/
 .idea/
+
+# Relay landing source (Next.js app, ~1 GB with node_modules/.next).
+# Lives in its own repo: github.com/eferguson0/relay-landing
+# Only the built static export in /relay is committed here.
+relay-landing copy/
+relay-landing/
