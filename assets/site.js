@@ -60,7 +60,8 @@
       <h2>${featured.url
         ? `<a href="${esc(featured.url)}" rel="noopener">${esc(featured.title)}</a>`
         : esc(featured.title)}</h2>
-      <p>${esc(featured.summary)}</p>
+      <p class="summary">${esc(featured.summary)}</p>
+      ${featured.value ? `<p class="value">${esc(featured.value)}</p>` : ""}
       ${preview(featured)}
       <div class="skills">${featured.skills
         .map((k) => `<span>${esc(k)}</span>`).join("")}</div>`;
@@ -77,7 +78,8 @@
           <h2>${p.url
             ? `<a href="${esc(p.url)}" rel="noopener">${esc(p.title)}</a>`
             : esc(p.title)}</h2>
-          <p>${esc(p.summary)}</p>
+          <p class="summary">${esc(p.summary)}</p>
+          ${p.value ? `<p class="value">${esc(p.value)}</p>` : ""}
           ${preview(p)}
           <div class="skills">${p.skills.map((s) => `<span>${esc(s)}</span>`).join("")}</div>
         </div>

@@ -9,7 +9,8 @@
    url       string     — live site, or "" if there isn't one
    preview   string     — screenshot in assets/previews/, or "" for a
                           hatched placeholder card
-   summary   string     — 1–3 sentences. What it was and why it existed.
+   summary   string     — what it is, under ten words
+   value     string     — one plain sentence: what I did, or what it produced
    skills    array      — rendered small and grey under the preview
    feature   boolean    — optional. Lifts the entry out of the timeline into
                           its own block above it, for current work.
@@ -36,13 +37,10 @@ const PROJECTS = [
     url: "",
     preview: "assets/previews/flyerz.webp",
     summary:
-      "Restaurant discovery for Gen Z built on photos, video and your own " +
-      "social network instead of written reviews — the insight being that the " +
-      "people you already trust are the ones you actually take recommendations " +
-      "from. Co-founded and incorporated it, interviewed 200+ consumers, took " +
-      "it through SDSU's Lavin startup program and two rounds of review " +
-      "panels to a seed-fund award, and recruited a technical co-founder " +
-      "to build it.",
+      "Restaurant discovery based on photos from friends, not reviews.",
+    value:
+      "I incorporated the company, won seed funding, and hired a " +
+      "technical co-founder.",
     skills: ["Co-founding", "Incorporation", "Customer discovery", "Pitching", "Recruiting", "Management"],
   },
   {
@@ -53,11 +51,9 @@ const PROJECTS = [
     url: "/relay/",
     preview: "assets/previews/relay.webp",
     summary:
-      "An AI notepad for drafting. Hand it context — notes, message threads, " +
-      "documents — and it writes a first draft, then you edit in place: select " +
-      "any passage, say what should change, and it revises, no copy-pasting " +
-      "back into a chat window. It learned your voice per channel and applied " +
-      "it to each new draft. Never launched publicly.",
+      "An AI notepad for drafting, with in-place editing.",
+    value:
+      "I built the frontend and the LLM backend. It never launched.",
     skills: ["TypeScript", "Next.js", "Python", "Anthropic API", "LangChain", "Vector search"],
   },
   {
@@ -67,11 +63,9 @@ const PROJECTS = [
     url: "",
     preview: "assets/previews/aspire.webp",
     summary:
-      "An AI resume tool for job seekers. Paste in a job posting and Aspire " +
-      "rewrites your resume against that specific role — split-screen, with " +
-      "inline editing on one side and a chat assistant on the other. My own " +
-      "work was mostly the front half — Meta Ads, market research and user " +
-      "interviews — feeding a pilot with a waitlist of early-career job seekers.",
+      "AI resume tailoring for early-career job seekers.",
+    value:
+      "I ran the ads, the market research and the user interviews.",
     skills: ["Meta Ads", "Market research", "User interviews", "Pricing", "Product", "Cursor"],
   },
   {
@@ -81,11 +75,10 @@ const PROJECTS = [
     url: "https://supahealth-landing.onrender.com",
     preview: "assets/previews/supahealth.webp",
     summary:
-      "An iOS fitness app that builds a nutrition and training plan from your " +
-      "biometrics, then adjusts daily calorie targets in real time against " +
-      "burn pulled from Apple Health. Shipped to the App Store with a " +
-      "subscription tier and an AI assistant that can answer questions " +
-      "against your own data.",
+      "An iOS fitness app that adjusts calorie targets daily.",
+    value:
+      "I built the iOS app and the backend, and shipped it to the " +
+      "App Store.",
     skills: ["Swift", "SwiftUI", "HealthKit", "FastAPI", "PostgreSQL", "OpenAI API", "PostHog", "Beta testing", "Claude Code"],
   },
   {
@@ -98,9 +91,10 @@ const PROJECTS = [
     url: "https://fergusonappliedai.com",
     preview: "assets/previews/faai.png",
     summary:
-      "AI implementation consulting. A workflow audit to find where AI " +
-      "actually pays off, then end-to-end system configuration, then training " +
-      "and handoff so the team keeps running it without me.",
+      "AI implementation consulting.",
+    value:
+      "I audit workflows, configure the systems, then train the team " +
+      "to run them.",
     skills: ["Market research", "Workflow audit", "AI implementation", "Training & enablement", "Client delivery"],
   },
 ];
