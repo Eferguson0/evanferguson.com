@@ -66,7 +66,7 @@ const PROJECTS = [
     description: "AI co-pilot for job search.",
     team: "Solo",
     result: "Tested 2 personas, 44 signups from paid ads, 4 user interviews",
-    skills: ["Meta Ads", "Market research", "User interviews", "Cursor"],
+    skills: ["Meta Ads", "Market research", "User interviews", "Figma", "Cursor"],
   },
   {
     start: "2025-07",
