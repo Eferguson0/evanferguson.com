@@ -9,8 +9,10 @@
    url       string     — live site, or "" if there isn't one
    preview   string     — screenshot in assets/previews/, or "" for a
                           hatched placeholder card
-   summary   string     — what it is, under ten words
-   value     string     — one plain sentence: what I did, or what it produced
+   role      string     — who did it, and with whom
+   outcome   string     — what happened to it. Facts, separated by " · "
+   summary   string     — legacy prose line; role/outcome take priority
+   value     string     — legacy second prose line
    skills    array      — rendered small and grey under the preview
    feature   boolean    — optional. Lifts the entry out of the timeline into
                           its own block above it, for current work.
@@ -74,11 +76,9 @@ const PROJECTS = [
     title: "Supahealth",
     url: "https://supahealth-landing.onrender.com",
     preview: "assets/previews/supahealth.webp",
-    summary:
-      "An iOS fitness app that adjusts calorie targets daily.",
-    value:
-      "I built the iOS app and the backend, and shipped it to the " +
-      "App Store.",
+        description: "An iOS fitness app that adjusts calorie targets daily.",
+    team: "Founder and engineer, with one other",
+    result: "Shipped to the App Store · $5/month subscription",
     skills: ["Swift", "SwiftUI", "HealthKit", "FastAPI", "PostgreSQL", "OpenAI API", "PostHog", "Beta testing", "Claude Code"],
   },
   {

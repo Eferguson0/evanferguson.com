@@ -20,6 +20,19 @@
   ].join("");
 
   /* ------------------------------------------------------------ timeline */
+
+  // Labelled record: description, team, result, skills.
+  const recordRows = (p) => {
+    const rows = [
+      ["Description", esc(p.description)],
+      ["Team", p.team && esc(p.team)],
+      ["Result", p.result && esc(p.result)],
+      ["Skills", p.skills && p.skills.map(esc).join(" \u00b7 ")],
+    ].filter(([, v]) => v);
+    return `<dl class="rec">${rows
+      .map(([k, v]) => `<dt class="label">${k}</dt><dd>${v}</dd>`).join("")}</dl>`;
+  };
+
   // Rail shows the start year, with the end year (or "now") beneath it when
   // the project didn't begin and end in the same year.
   const railLines = (p) => {
@@ -78,10 +91,13 @@
           <h2>${p.url
             ? `<a href="${esc(p.url)}" rel="noopener">${esc(p.title)}</a>`
             : esc(p.title)}</h2>
-          <p class="summary">${esc(p.summary)}</p>
-          ${p.value ? `<p class="value">${esc(p.value)}</p>` : ""}
+          ${p.description
+            ? recordRows(p)
+            : `<p class="summary">${esc(p.summary)}</p>
+               ${p.value ? `<p class="value">${esc(p.value)}</p>` : ""}`}
           ${preview(p)}
-          <div class="skills">${p.skills.map((s) => `<span>${esc(s)}</span>`).join("")}</div>
+          ${p.description ? "" :
+            `<div class="skills">${p.skills.map((s) => `<span>${esc(s)}</span>`).join("")}</div>`}
         </div>
       </article>`).join("");
 
