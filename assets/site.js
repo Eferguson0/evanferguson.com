@@ -40,7 +40,7 @@
   };
 
   $("timeline").innerHTML = [...PROJECTS]
-    .sort((a, b) => a.start.localeCompare(b.start))
+    .sort((a, b) => b.start.localeCompare(a.start))   // newest first
     .map((p) => `
       <article class="entry reveal">
         <div class="entry-year">${railLines(p)

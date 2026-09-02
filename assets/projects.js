@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------------------------
    PROJECT DATA — the only file you need to edit.
 
-   start     "YYYY-MM"  — when it began. Sorts the timeline (oldest first).
+   start     "YYYY-MM"  — when it began. Sorts the timeline (newest first).
    end       "YYYY-MM"  — when it ended, or null if it's still running.
                           The rail shows the start year, plus "–2022" / "–now"
                           on a second line when the end differs.

@@ -1,6 +1,6 @@
 # evanferguson.com
 
-A single-page vertical timeline of projects, oldest first. Static — no build
+A single-page vertical timeline of projects, newest first. Static — no build
 step, no dependencies, no framework. Open `index.html` and it works.
 
 ## Editing
@@ -19,7 +19,7 @@ Everything is in **`assets/projects.js`**. Each entry is:
 }
 ```
 
-Order is by `start`, ascending. Seasons map to months: spring `04`, summer
+Order is by `start`, descending — most recent at the top. Seasons map to months: spring `04`, summer
 `07`, fall `10`, winter `01`. The rail prints the start year, adding a second
 line (`–2022`, or `–now` when `end` is `null`) only when the end year differs.
 
