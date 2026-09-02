@@ -142,10 +142,13 @@ img { max-width: 100%; }
 .entry-year {
   font-family: var(--font-mono);
   font-size: 12px; letter-spacing: 0.06em;
+  line-height: 1.5;
   color: var(--ink-3);
   text-align: right; padding-right: 22px;
-  padding-top: 5px;
+  padding-top: 4px;
 }
+.entry-year span { display: block; }
+.entry-year .to { color: var(--ink-4); }
 
 /* the dot on the line */
 .entry::before {
@@ -239,7 +242,9 @@ a.preview:hover { border-color: var(--rule-strong); }
     padding-left: 26px;
   }
   .entry-year {
-    text-align: left; padding: 0 0 6px; }
+    text-align: left; padding: 0 0 6px;
+  }
+  .entry-year span { display: inline; }
   .entry::before { top: 7px; }
   .timeline::before { top: 6px; }
 }

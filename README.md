@@ -9,7 +9,8 @@ Everything is in **`assets/projects.js`**. Each entry is:
 
 ```js
 {
-  year: 2021,
+  start: "2021-04",                        // "YYYY-MM" — sorts the timeline
+  end: "2022-07",                          // null if it's still running
   title: "Project Name",
   url: "https://example.com",              // "" if private / no site
   preview: "assets/previews/slug.png",     // "" for a plain placeholder card
@@ -18,7 +19,11 @@ Everything is in **`assets/projects.js`**. Each entry is:
 }
 ```
 
-Order is by `year`, ascending. Nothing else needs touching.
+Order is by `start`, ascending. Seasons map to months: spring `04`, summer
+`07`, fall `10`, winter `01`. The rail prints the start year, adding a second
+line (`–2022`, or `–now` when `end` is `null`) only when the end year differs.
+
+Nothing else needs touching.
 
 ## Website previews
 

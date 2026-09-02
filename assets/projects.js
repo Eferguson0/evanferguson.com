@@ -1,13 +1,18 @@
 /* ---------------------------------------------------------------------------
    PROJECT DATA — the only file you need to edit.
 
-   year      number   — drives the timeline order (oldest first)
-   title     string   — project name
-   url       string   — live site, or "" if there isn't one / it's private
-   preview   string   — path to a screenshot in assets/previews/, or "" for a
-                        plain placeholder card
-   summary   string   — 1–3 sentences. What it was and why it existed.
-   skills    array    — rendered small and grey under the preview
+   start     "YYYY-MM"  — when it began. Sorts the timeline (oldest first).
+   end       "YYYY-MM"  — when it ended, or null if it's still running.
+                          The rail shows the start year, plus "–2022" / "–now"
+                          on a second line when the end differs.
+   title     string
+   url       string     — live site, or "" if there isn't one
+   preview   string     — screenshot in assets/previews/, or "" for a
+                          hatched placeholder card
+   summary   string     — 1–3 sentences. What it was and why it existed.
+   skills    array      — rendered small and grey under the preview
+
+   Seasons map to months: spring 04, summer 07, fall 10, winter 01.
 --------------------------------------------------------------------------- */
 
 const SITE = {
@@ -23,53 +28,56 @@ const SITE = {
 
 const PROJECTS = [
   {
-    year: 2017,
-    title: "PLACEHOLDER — First Venture",
+    start: "2021-04",
+    end: "2022-07",
+    title: "Flyerz",
     url: "",
     preview: "",
     summary:
-      "Replace this with your earliest real project. Even a small one belongs " +
-      "here — the distance between this entry and the last one is the whole point.",
-    skills: ["Excel", "Sales", "Operations"],
+      "A TikTok-meets-Yelp concept: restaurant reviews and recommendations " +
+      "built around short-form video instead of written reviews, with a " +
+      "social feed at the centre of discovery.",
+    // TODO(Evan): confirm — what did you actually build this in?
+    skills: ["Product design", "Mobile", "Social"],
   },
   {
-    year: 2019,
-    title: "PLACEHOLDER — Ops Automation",
+    start: "2025-04",
+    end: "2025-10",
+    title: "Aspire",
     url: "",
     preview: "",
+    // TODO(Evan): needs a real description — what did it do, and for whom?
     summary:
-      "The first time you wrote code to solve your own business problem. The " +
-      "crossover projects are the most interesting entries on the page.",
-    skills: ["Python", "Google Sheets API", "Zapier"],
+      "An AI-assisted job search tool.",
+    // TODO(Evan): confirm the stack.
+    skills: ["LLM APIs", "Product"],
   },
   {
-    year: 2021,
-    title: "PLACEHOLDER — First Real Application",
-    url: "https://example.com",
-    preview: "",
+    start: "2025-07",
+    end: "2026-07",
+    title: "Supahealth",
+    url: "https://supahealth-landing.onrender.com",
+    preview: "assets/previews/supahealth.png",
     summary:
-      "A full application with users other than you. Say what made it hard, " +
-      "not what features it had.",
-    skills: ["JavaScript", "React", "Postgres", "Render"],
+      "An iOS fitness app that builds a nutrition and training plan from your " +
+      "biometrics, then adjusts daily calorie targets in real time against " +
+      "burn pulled from Apple Health. Shipped to the App Store with a " +
+      "subscription tier and an AI assistant that can answer questions " +
+      "against your own data.",
+    // TODO(Evan): confirm — inferred from the repos and the landing page.
+    skills: ["Swift", "HealthKit", "Backend API", "Postgres", "Render", "App Store"],
   },
   {
-    year: 2023,
-    title: "PLACEHOLDER — Production System",
-    url: "https://example.com",
-    preview: "",
+    start: "2026-04",
+    end: null,
+    title: "Ferguson Applied AI",
+    url: "https://fergusonappliedai.com",
+    preview: "assets/previews/faai.png",
     summary:
-      "Multi-service, real data volume, real consequences when it broke. " +
-      "Describe the constraint that shaped the design.",
-    skills: ["TypeScript", "Node", "Postgres", "Redis", "AWS"],
-  },
-  {
-    year: 2025,
-    title: "PLACEHOLDER — Current Work",
-    url: "https://example.com",
-    preview: "",
-    summary:
-      "What you're building now. Give this one a little more room than the " +
-      "others — it's the entry people read before they email you.",
-    skills: ["Swift", "TypeScript", "Postgres", "LLM APIs"],
+      "AI implementation consulting. A workflow audit to find where AI " +
+      "actually pays off, then end-to-end system configuration, then training " +
+      "and handoff so the team keeps running it without me.",
+    // TODO(Evan): confirm.
+    skills: ["AI implementation", "Workflow design", "Consulting", "Web"],
   },
 ];

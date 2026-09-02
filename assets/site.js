@@ -30,11 +30,21 @@
       : `<div class="${cls}">${inner}</div>`;
   };
 
+  // Rail shows the start year, with the end year (or "now") beneath it when
+  // the project didn't begin and end in the same year.
+  const railLines = (p) => {
+    const a = p.start.slice(0, 4);
+    if (!p.end) return [a, "\u2013now"];
+    const b = p.end.slice(0, 4);
+    return b === a ? [a] : [a, "\u2013" + b];
+  };
+
   $("timeline").innerHTML = [...PROJECTS]
-    .sort((a, b) => a.year - b.year)
+    .sort((a, b) => a.start.localeCompare(b.start))
     .map((p) => `
       <article class="entry reveal">
-        <div class="entry-year">${p.year}</div>
+        <div class="entry-year">${railLines(p)
+          .map((l, i) => `<span${i ? ' class="to"' : ""}>${l}</span>`).join("")}</div>
         <div>
           <h2>${p.url
             ? `<a href="${esc(p.url)}" rel="noopener">${esc(p.title)}</a>`
