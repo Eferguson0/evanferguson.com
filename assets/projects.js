@@ -62,7 +62,7 @@ const PROJECTS = [
     end: "2025-10",
     title: "Aspire",
     url: "",
-    preview: "",
+    preview: "assets/previews/aspire.webp",
     summary:
       "An AI resume tool for job seekers. Paste in a job posting and Aspire " +
       "rewrites your resume against that specific role — split-screen, with " +
