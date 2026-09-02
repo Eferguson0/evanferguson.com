@@ -77,7 +77,7 @@ const PROJECTS = [
         description: "An iOS fitness app that adjusts calorie targets daily.",
     team: "2: myself, security engineer",
     result: "15 users, frontend on TestFlight, backend on AWS",
-    skills: ["Swift", "SwiftUI", "HealthKit", "FastAPI", "PostgreSQL", "OpenAI API", "AWS", "PostHog", "Beta testing", "Claude Code"],
+    skills: ["Swift", "HealthKit", "Barcode scanning", "FastAPI", "PostgreSQL", "USDA FoodData Central", "OpenAI API", "AWS", "PostHog", "Claude Code"],
   },
   {
     start: "2026-04",
