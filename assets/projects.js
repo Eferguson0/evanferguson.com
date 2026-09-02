@@ -53,7 +53,7 @@ const PROJECTS = [
     description: "Quickly relay information with AI.",
     team: "Solo",
     result:
-      "Developed prototype, implemented memory system — used until Claude " +
+      "Developed for personal use w/ agent memory — used until Claude " +
       "rolled out MCP support & made this tool obsolete",
     skills: ["TypeScript", "Next.js", "Python", "CrewAI", "Anthropic API", "OpenAI API", "Agent memory", "Supabase", "Cursor"],
   },
