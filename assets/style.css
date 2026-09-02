@@ -229,12 +229,18 @@ img { max-width: 100%; }
 .rec {
   display: grid; grid-template-columns: 62px 1fr;
   gap: 4px 20px;
-  margin: 16px 0 clamp(22px, 3.5vw, 32px);
+  margin: 18px 0 clamp(22px, 3.5vw, 32px);
   max-width: var(--measure);
-  font-size: 14.5px;
 }
-.rec dt { padding-top: 4px; }
-.rec dd { margin: 0; color: var(--ink-2); line-height: 1.5; }
+.rec dt { padding-top: 3px; }
+/* Values share the labels' family. Prose is sans, data is mono - the same
+   split the skills line and the year rail already use. */
+.rec dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12.5px; letter-spacing: 0.02em; line-height: 1.7;
+  color: var(--ink-2);
+}
 @media (max-width: 620px) {
   .rec { grid-template-columns: 1fr; gap: 2px; }
   .rec dt { padding-top: 11px; }
