@@ -38,11 +38,9 @@ const PROJECTS = [
     title: "Flyerz",
     url: "",
     preview: "assets/previews/flyerz.webp",
-    summary:
-      "Restaurant discovery based on photos from friends, not reviews.",
-    value:
-      "I incorporated the company, won seed funding, and hired a " +
-      "technical co-founder.",
+    description: "Restaurant discovery based on photos from friends, not reviews.",
+    team: "4: myself, co-founder, 2 others",
+    result: "200+ consumer interviews, seed-fund award",
     skills: ["Co-founding", "Incorporation", "Customer discovery", "Pitching", "Recruiting", "Management"],
   },
   {
@@ -52,10 +50,9 @@ const PROJECTS = [
     title: "Relay",
     url: "/relay/",
     preview: "assets/previews/relay.webp",
-    summary:
-      "An AI notepad for drafting, with in-place editing.",
-    value:
-      "I built the frontend and the LLM backend. It never launched.",
+    description: "An AI notepad for drafting, with in-place editing.",
+    team: "",
+    result: "Never launched",
     skills: ["TypeScript", "Next.js", "Python", "Anthropic API", "LangChain", "Vector search"],
   },
   {
@@ -64,10 +61,9 @@ const PROJECTS = [
     title: "Aspire",
     url: "",
     preview: "assets/previews/aspire.webp",
-    summary:
-      "AI resume tailoring for early-career job seekers.",
-    value:
-      "I ran the ads, the market research and the user interviews.",
+    description: "AI resume tailoring for early-career job seekers.",
+    team: "",
+    result: "",
     skills: ["Meta Ads", "Market research", "User interviews", "Pricing", "Product", "Cursor"],
   },
   {
@@ -77,7 +73,7 @@ const PROJECTS = [
     url: "https://supahealth-landing.onrender.com",
     preview: "assets/previews/supahealth.webp",
         description: "An iOS fitness app that adjusts calorie targets daily.",
-    team: "2 co-founders — me and a security engineer",
+    team: "2: myself, security engineer",
     result: "15 users, frontend on TestFlight, backend on AWS",
     skills: ["Swift", "SwiftUI", "HealthKit", "FastAPI", "PostgreSQL", "OpenAI API", "AWS", "PostHog", "Beta testing", "Claude Code"],
   },
@@ -90,11 +86,9 @@ const PROJECTS = [
     title: "Ferguson Applied AI",
     url: "https://fergusonappliedai.com",
     preview: "assets/previews/faai.png",
-    summary:
-      "AI implementation consulting.",
-    value:
-      "I audit workflows, configure the systems, then train the team " +
-      "to run them.",
+    description: "AI implementation consulting.",
+    team: "1: myself",
+    result: "",
     skills: ["Market research", "Workflow audit", "AI implementation", "Training & enablement", "Client delivery"],
   },
 ];

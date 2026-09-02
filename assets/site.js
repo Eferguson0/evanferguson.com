@@ -73,11 +73,13 @@
       <h2>${featured.url
         ? `<a href="${esc(featured.url)}" rel="noopener">${esc(featured.title)}</a>`
         : esc(featured.title)}</h2>
-      <p class="summary">${esc(featured.summary)}</p>
-      ${featured.value ? `<p class="value">${esc(featured.value)}</p>` : ""}
+      ${featured.description
+        ? recordRows(featured)
+        : `<p class="summary">${esc(featured.summary)}</p>
+           ${featured.value ? `<p class="value">${esc(featured.value)}</p>` : ""}`}
       ${preview(featured)}
-      <div class="skills">${featured.skills
-        .map((k) => `<span>${esc(k)}</span>`).join("")}</div>`;
+      ${featured.description ? "" : `<div class="skills">${featured.skills
+        .map((k) => `<span>${esc(k)}</span>`).join("")}</div>`}`;
     $("current").hidden = false;
     $("timelineHead").hidden = false;
   }
