@@ -38,7 +38,7 @@ const PROJECTS = [
     title: "Flyerz",
     url: "",
     preview: "assets/previews/flyerz.webp",
-    description: "Restaurant discovery based on photos from friends, not reviews.",
+    description: "Image & video-based restaurant discovery.",
     team: "4: myself, co-founder, designer, engineer",
     result: "50+ user interviews, $10k funding, built team to 4",
     skills: ["Co-founding", "Incorporation", "Customer discovery", "Pitching", "Recruiting", "Management"],
