@@ -21,7 +21,7 @@ const SITE = {
   intro: "",
   email: "evan.ferguson0@gmail.com",
   links: [
-    { label: "GitHub", href: "https://github.com/PLACEHOLDER" },
+    { label: "GitHub", href: "https://github.com/Eferguson0" },
     { label: "LinkedIn", href: "https://linkedin.com/in/PLACEHOLDER" },
   ],
 };

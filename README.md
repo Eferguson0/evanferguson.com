@@ -66,7 +66,7 @@ python3 -m http.server 8080
    - `A` @ → `185.199.109.153`
    - `A` @ → `185.199.110.153`
    - `A` @ → `185.199.111.153`
-   - `CNAME` www → `<github-username>.github.io`
+   - `CNAME` www → `Eferguson0.github.io`
 5. Tick **Enforce HTTPS** once the certificate issues.
 
 ### Render — use this instead if you later add a backend
