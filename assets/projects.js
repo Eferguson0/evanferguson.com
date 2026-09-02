@@ -55,7 +55,7 @@ const PROJECTS = [
     result:
       "Developed for personal use — abandoned once Claude rolled out MCP " +
       "support",
-    skills: ["TypeScript", "Next.js", "Python", "Anthropic API", "LangChain", "Vector search"],
+    skills: ["TypeScript", "Next.js", "Python", "Supabase", "Anthropic API", "LangChain", "Vector search"],
   },
   {
     start: "2025-04",
