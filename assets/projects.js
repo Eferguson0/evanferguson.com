@@ -65,9 +65,7 @@ const PROJECTS = [
     preview: "assets/previews/aspire.webp",
     description: "AI co-pilot for job search.",
     team: "Solo",
-    result:
-      "Tested 5 positioning angles and 5 personas, 44 signups at $6.67 " +
-      "CPA, 4 user interviews",
+    result: "Tested 2 personas, 44 signups from paid ads, 4 user interviews",
     skills: ["Meta Ads", "Market research", "User interviews", "Cursor"],
   },
   {
