@@ -22,7 +22,7 @@ const SITE = {
   email: "evan.ferguson0@gmail.com",
   links: [
     { label: "GitHub", href: "https://github.com/Eferguson0" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/PLACEHOLDER" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/evandferguson/" },
   ],
 };
 
