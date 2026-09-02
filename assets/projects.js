@@ -87,8 +87,9 @@ const PROJECTS = [
     url: "https://fergusonappliedai.com",
     preview: "assets/previews/faai.png",
     description: "AI implementation consulting.",
-    team: "1: myself",
+    // The offer, not a portfolio entry — no team, result or skills row.
+    team: "",
     result: "",
-    skills: ["Market research", "Workflow audit", "AI implementation", "Training & enablement", "Client delivery"],
+    skills: [],
   },
 ];
