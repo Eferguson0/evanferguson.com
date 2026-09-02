@@ -24,13 +24,13 @@
   // Labelled record: description, team, result, skills.
   const recordRows = (p) => {
     const rows = [
-      ["Description", esc(p.description)],
       ["Team", p.team && esc(p.team)],
       ["Result", p.result && esc(p.result)],
       ["Skills", p.skills && p.skills.map(esc).join(" \u00b7 ")],
     ].filter(([, v]) => v);
-    return `<dl class="rec">${rows
-      .map(([k, v]) => `<dt class="label">${k}</dt><dd>${v}</dd>`).join("")}</dl>`;
+    return `<p class="summary">${esc(p.description)}</p>
+      <dl class="rec">${rows
+        .map(([k, v]) => `<dt class="label">${k}</dt><dd>${v}</dd>`).join("")}</dl>`;
   };
 
   // Rail shows the start year, with the end year (or "now") beneath it when
