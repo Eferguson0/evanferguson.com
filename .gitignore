@@ -9,3 +9,7 @@ node_modules/
 # Only the built static export in /relay is committed here.
 relay-landing copy/
 relay-landing/
+
+# Source assets pulled from Figma for compositing previews. The finished
+# preview images in assets/previews/ are what ship.
+assets/previews/src/
