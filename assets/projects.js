@@ -48,7 +48,7 @@ const PROJECTS = [
     end: "2025-04",
     title: "Relay",
     url: "/relay/",
-    preview: "assets/previews/relay.png",
+    preview: "assets/previews/relay.webp",
     summary:
       "An AI notepad for drafting. Hand it context — notes, message threads, " +
       "documents — and it writes a first draft, then you edit in place: select " +
