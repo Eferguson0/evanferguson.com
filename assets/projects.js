@@ -79,7 +79,7 @@ const PROJECTS = [
     end: "2026-07",
     title: "Supahealth",
     url: "https://supahealth-landing.onrender.com",
-    preview: "assets/previews/supahealth.png",
+    preview: "assets/previews/supahealth.webp",
     summary:
       "An iOS fitness app that builds a nutrition and training plan from your " +
       "biometrics, then adjusts daily calorie targets in real time against " +
