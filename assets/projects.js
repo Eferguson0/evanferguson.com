@@ -70,7 +70,7 @@ const PROJECTS = [
       "inline editing on one side and a chat assistant on the other. My own " +
       "work was mostly the front half — Meta Ads, market research and user " +
       "interviews — feeding a pilot with a waitlist of early-career job seekers.",
-    skills: ["Meta Ads", "Market research", "User interviews", "Pricing", "Product"],
+    skills: ["Meta Ads", "Market research", "User interviews", "Pricing", "Product", "Cursor"],
   },
   {
     start: "2025-07",
@@ -84,7 +84,7 @@ const PROJECTS = [
       "burn pulled from Apple Health. Shipped to the App Store with a " +
       "subscription tier and an AI assistant that can answer questions " +
       "against your own data.",
-    skills: ["Swift", "SwiftUI", "HealthKit", "FastAPI", "PostgreSQL", "OpenAI API", "PostHog", "Beta testing"],
+    skills: ["Swift", "SwiftUI", "HealthKit", "FastAPI", "PostgreSQL", "OpenAI API", "PostHog", "Beta testing", "Claude Code"],
   },
   {
     start: "2026-04",
