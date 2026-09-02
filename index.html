@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evan Ferguson</title>
+  <meta name="description" content="Projects, in order, with what each one taught me.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◑</button>
+
+  <!-- ===================================================== masthead ==== -->
+  <header class="masthead">
+    <div class="shell">
+      <div class="eyebrow"><span class="label" id="mastLabel">Evan Ferguson</span></div>
+      <h1 id="tagline"></h1>
+      <p class="intro" id="intro"></p>
+      <div class="contact-row" id="contactRow"></div>
+    </div>
+  </header>
+
+  <!-- ================================================== headline stats == -->
+  <div class="shell">
+    <div class="stats" id="stats"></div>
+  </div>
+
+  <!-- ====================================================== the ridge === -->
+  <section>
+    <div class="shell">
+      <div class="section-head">
+        <h2>The climb</h2>
+        <span class="note">Each dot is a project. Height is difficulty.<br>Click one to jump to it.</span>
+      </div>
+      <div class="ridge-wrap"><svg class="ridge" id="ridge" role="img"
+        aria-label="Chart of project complexity over time"></svg></div>
+    </div>
+  </section>
+
+  <!-- ===================================================== the ledger === -->
+  <section style="padding-top:0">
+    <div class="shell">
+      <div class="section-head">
+        <h2>The record</h2>
+        <span class="note">Oldest first — the order is the point.</span>
+      </div>
+      <div class="ledger" id="ledger"></div>
+    </div>
+  </section>
+
+  <!-- ================================================ skill accretion === -->
+  <section style="padding-top:0">
+    <div class="shell">
+      <div class="section-head">
+        <h2>What accumulated</h2>
+        <span class="note">Each line starts the year I first used it in anger.</span>
+      </div>
+      <div class="skills" id="skills"></div>
+      <div class="skill-axis" id="skillAxis"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================= colophon === -->
+  <footer>
+    <div class="shell">
+      <div class="colophon">
+        <span class="label" id="colophonName"></span>
+        <span class="spacer"></span>
+        <span class="label" id="colophonNote">Built by hand. No template.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/projects.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
