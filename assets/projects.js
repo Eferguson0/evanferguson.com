@@ -96,6 +96,6 @@ const PROJECTS = [
       "AI implementation consulting. A workflow audit to find where AI " +
       "actually pays off, then end-to-end system configuration, then training " +
       "and handoff so the team keeps running it without me.",
-    skills: ["AI implementation", "Workflow audit", "Training & enablement", "Client delivery"],
+    skills: ["Market research", "Workflow audit", "AI implementation", "Training & enablement", "Client delivery"],
   },
 ];
