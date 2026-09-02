@@ -34,11 +34,28 @@ const PROJECTS = [
     url: "",
     preview: "",
     summary:
-      "A TikTok-meets-Yelp concept: restaurant reviews and recommendations " +
-      "built around short-form video instead of written reviews, with a " +
-      "social feed at the centre of discovery.",
-    // TODO(Evan): confirm — what did you actually build this in?
-    skills: ["Product design", "Mobile", "Social"],
+      "Restaurant discovery for Gen Z built on photos, video and your own " +
+      "social network instead of written reviews — the insight being that the " +
+      "people you already trust are the ones you actually take recommendations " +
+      "from. Co-founded and incorporated it, interviewed 200+ consumers, won " +
+      "funding from SDSU's Lavin Seed Fund, and recruited a technical " +
+      "co-founder to build it.",
+    skills: ["Co-founding", "Customer discovery", "Fundraising", "Brand", "Product design"],
+  },
+  {
+    // TODO(Evan): dates inferred from the Drive folder (Feb–Apr 2025) — confirm.
+    start: "2025-02",
+    end: "2025-04",
+    title: "Relay",
+    url: "",
+    preview: "",
+    summary:
+      "A cross-channel messaging assistant for Slack and email. You type a " +
+      "short instruction — \"follow up with the client\" — and Relay reads the " +
+      "open thread, infers the recipient and subject, and returns a " +
+      "ready-to-send draft, with a refinement loop for tone and length. Never " +
+      "launched publicly.",
+    skills: ["TypeScript", "LLM APIs", "MCP", "Product", "PMF research"],
   },
   {
     start: "2025-04",
@@ -46,11 +63,12 @@ const PROJECTS = [
     title: "Aspire",
     url: "",
     preview: "",
-    // TODO(Evan): needs a real description — what did it do, and for whom?
     summary:
-      "An AI-assisted job search tool.",
-    // TODO(Evan): confirm the stack.
-    skills: ["LLM APIs", "Product"],
+      "An AI resume tool for job seekers. Paste in a job posting and Aspire " +
+      "rewrites your resume against that specific role — split-screen, with " +
+      "inline editing on one side and a chat assistant on the other. Ran a " +
+      "pilot with a waitlist of early-career job seekers.",
+    skills: ["LLM APIs", "Product", "User research", "Pricing"],
   },
   {
     start: "2025-07",
