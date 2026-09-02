@@ -43,7 +43,7 @@ const PROJECTS = [
       "it through SDSU's Lavin startup program and two rounds of review " +
       "panels to a seed-fund award, and recruited a technical co-founder " +
       "to build it.",
-    skills: ["Co-founding", "Incorporation", "Customer discovery", "Fundraising", "Recruiting", "Management"],
+    skills: ["Co-founding", "Incorporation", "Customer discovery", "Pitching", "Recruiting", "Management"],
   },
   {
     // Dates from the Drive folder (Feb–Apr 2025).
