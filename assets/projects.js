@@ -55,7 +55,7 @@ const PROJECTS = [
     result:
       "Developed prototype, implemented memory system — used until Claude " +
       "rolled out MCP support & made this tool obsolete",
-    skills: ["TypeScript", "Next.js", "Python", "Supabase", "Anthropic API", "Agent memory", "LangChain"],
+    skills: ["TypeScript", "Next.js", "Python", "Supabase", "Anthropic API", "OpenAI API", "CrewAI", "Agent memory"],
   },
   {
     start: "2025-04",
