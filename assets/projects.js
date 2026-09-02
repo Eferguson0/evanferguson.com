@@ -41,7 +41,7 @@ const PROJECTS = [
     description: "Image & video-based restaurant discovery.",
     team: "4: myself, co-founder, designer, engineer",
     result: "50+ user interviews, $10k funding, built team to 4",
-    skills: ["Co-founding", "Incorporation", "Customer discovery", "Pitching", "Recruiting", "Management"],
+    skills: ["Co-founding", "Management", "Recruiting", "Pitching", "Customer discovery", "Incorporation"],
   },
   {
     // Dates from the Drive folder (Feb–Apr 2025).
@@ -55,7 +55,7 @@ const PROJECTS = [
     result:
       "Developed prototype, implemented memory system — used until Claude " +
       "rolled out MCP support & made this tool obsolete",
-    skills: ["TypeScript", "Next.js", "Python", "Supabase", "Anthropic API", "OpenAI API", "CrewAI", "Agent memory", "Cursor"],
+    skills: ["TypeScript", "Next.js", "Python", "CrewAI", "Anthropic API", "OpenAI API", "Agent memory", "Supabase", "Cursor"],
   },
   {
     start: "2025-04",
@@ -77,7 +77,7 @@ const PROJECTS = [
         description: "Real-time body composition management.",
     team: "2: myself, security engineer",
     result: "15 users, frontend on TestFlight, backend on AWS",
-    skills: ["Swift", "HealthKit", "FastAPI", "PostgreSQL", "External data sources", "OpenAI API", "AWS", "PostHog", "Claude Code"],
+    skills: ["Swift", "Python", "FastAPI", "PostgreSQL", "AWS", "HealthKit", "OpenAI API", "External data sources", "PostHog", "Claude Code"],
   },
   {
     start: "2026-04",
