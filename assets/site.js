@@ -69,6 +69,10 @@
 
   const xOf = (yr) => PAD.l + ((yr - YEAR_MIN) / span) * (W - PAD.l - PAD.r);
   const clip = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
+  // Labels are centred on their dot, except near the edges where centring
+  // would push the text outside the chart box.
+  const EDGE = 110;
+  const anchorFor = (x) => (x < PAD.l + EDGE ? "start" : x > W - PAD.r - EDGE ? "end" : "middle");
 
   const svg = $("ridge");
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
@@ -82,7 +86,7 @@
     ${pts.map((p, i) => `
       <g class="node" data-i="${i}" tabindex="0" role="link" aria-label="${esc(p.title)}, ${p.year}">
         <line class="node-stem" x1="${p.x.toFixed(1)}" y1="${(p.y + 8).toFixed(1)}" x2="${p.x.toFixed(1)}" y2="${baseY}"/>
-        <text class="node-label" x="${p.x.toFixed(1)}" y="${(p.y - 14 - (i % 2 ? 13 : 0)).toFixed(1)}" text-anchor="middle">${esc(clip(p.title, 20))}</text>
+        <text class="node-label" x="${p.x.toFixed(1)}" y="${(p.y - 14 - (i % 2 ? 13 : 0)).toFixed(1)}" text-anchor="${anchorFor(p.x)}">${esc(clip(p.title, 20))}</text>
         <circle class="node-dot" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4.5"/>
         <circle class="node-hit" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="18"/>
       </g>`).join("")}
@@ -164,10 +168,11 @@
       </div>
     </div>`).join("");
 
-  const axisYears = gridYears;
-  $("skillAxis").style.gridTemplateColumns = `repeat(${axisYears.length}, 1fr)`;
-  $("skillAxis").innerHTML = axisYears.map((y, i) =>
-    `<span style="text-align:${i === 0 ? "left" : i === axisYears.length - 1 ? "right" : "center"}">${y}</span>`).join("");
+  // Position the year labels on the same scale as the bars so the two line up.
+  $("skillAxis").innerHTML = gridYears.map((y, i) => {
+    const shift = i === 0 ? "0" : i === gridYears.length - 1 ? "-100%" : "-50%";
+    return `<span style="left:${pct(y).toFixed(2)}%;transform:translateX(${shift})">${y}</span>`;
+  }).join("");
 
   /* ------------------------------------------------------------ reveal - */
   const io = new IntersectionObserver((es) => es.forEach((e) => {
