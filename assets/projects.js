@@ -64,8 +64,8 @@ const PROJECTS = [
     url: "",
     preview: "assets/previews/aspire.webp",
     description: "AI resume tailoring for early-career job seekers.",
-    team: "",
-    result: "",
+    team: "Solo",
+    result: "44 waitlist signups, built the MVP: upload, tailor, edit",
     skills: ["Meta Ads", "Market research", "User interviews", "Pricing", "Product", "Cursor"],
   },
   {
