@@ -68,7 +68,7 @@ const PROJECTS = [
     result:
       "Tested 5 positioning angles and 5 personas, 44 signups at $6.67 " +
       "CPA, 4 user interviews",
-    skills: ["Meta Ads", "Market research", "User interviews", "Pricing", "Product", "Cursor"],
+    skills: ["Meta Ads", "Market research", "User interviews", "Cursor"],
   },
   {
     start: "2025-07",
