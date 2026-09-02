@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evan Ferguson</title>
-  <meta name="description" content="Projects, in order, with what each one taught me.">
+  <meta name="description" content="Projects, oldest first.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,63 +14,27 @@
 
   <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◑</button>
 
-  <!-- ===================================================== masthead ==== -->
   <header class="masthead">
     <div class="shell">
-      <div class="eyebrow"><span class="label" id="mastLabel">Evan Ferguson</span></div>
+      <span class="label name" id="mastName"></span>
       <h1 id="tagline"></h1>
       <p class="intro" id="intro"></p>
-      <div class="contact-row" id="contactRow"></div>
+      <nav class="contact-row" id="contactRow"></nav>
     </div>
   </header>
 
-  <!-- ================================================== headline stats == -->
-  <div class="shell">
-    <div class="stats" id="stats"></div>
-  </div>
-
-  <!-- ====================================================== the ridge === -->
-  <section>
+  <main>
     <div class="shell">
-      <div class="section-head">
-        <h2>The climb</h2>
-        <span class="note">Each dot is a project. Height is difficulty.<br>Click one to jump to it.</span>
-      </div>
-      <div class="ridge-wrap"><svg class="ridge" id="ridge" role="img"
-        aria-label="Chart of project complexity over time"></svg></div>
+      <div class="timeline" id="timeline"></div>
     </div>
-  </section>
+  </main>
 
-  <!-- ===================================================== the ledger === -->
-  <section style="padding-top:0">
-    <div class="shell">
-      <div class="section-head">
-        <h2>The record</h2>
-        <span class="note">Oldest first — the order is the point.</span>
-      </div>
-      <div class="ledger" id="ledger"></div>
-    </div>
-  </section>
-
-  <!-- ================================================ skill accretion === -->
-  <section style="padding-top:0">
-    <div class="shell">
-      <div class="section-head">
-        <h2>What accumulated</h2>
-        <span class="note">Each line starts the year I first used it in anger.</span>
-      </div>
-      <div class="skills" id="skills"></div>
-      <div class="skill-axis" id="skillAxis"></div>
-    </div>
-  </section>
-
-  <!-- ======================================================= colophon === -->
   <footer>
     <div class="shell">
       <div class="colophon">
         <span class="label" id="colophonName"></span>
         <span class="spacer"></span>
-        <span class="label" id="colophonNote">Built by hand. No template.</span>
+        <span class="label">Built by hand</span>
       </div>
     </div>
   </footer>
