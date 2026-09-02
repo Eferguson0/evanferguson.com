@@ -32,7 +32,7 @@ const PROJECTS = [
     end: "2022-07",
     title: "Flyerz",
     url: "",
-    preview: "",
+    preview: "assets/previews/flyerz.webp",
     summary:
       "Restaurant discovery for Gen Z built on photos, video and your own " +
       "social network instead of written reviews — the insight being that the " +
