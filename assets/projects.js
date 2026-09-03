@@ -40,7 +40,7 @@ const PROJECTS = [
     preview: "assets/previews/flyerz.webp",
     description: "Image & video-based restaurant discovery.",
     team: "4: myself, co-founder, designer, engineer",
-    result: "50+ user interviews, $10k funding, built team to 4",
+    result: "50+ discovery interviews, $10k funding, built team to 4",
     skills: ["Co-founding", "Management", "Recruiting", "Pitching", "Customer discovery", "Incorporation"],
   },
   {
@@ -65,8 +65,8 @@ const PROJECTS = [
     preview: "assets/previews/aspire.webp",
     description: "AI co-pilot for job search.",
     team: "Solo",
-    result: "44 waitlist signups, 4 customer interviews",
-    skills: ["Demand testing", "Positioning", "Meta Ads", "Ad copywriting", "Customer interviews", "Landing pages", "Market research", "Figma"],
+    result: "44 waitlist signups, 4 discovery interviews",
+    skills: ["Demand testing", "Positioning", "Meta Ads", "Ad copywriting", "Discovery interviews", "Landing pages", "Market research", "Figma"],
   },
   {
     start: "2025-07",
