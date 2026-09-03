@@ -5,21 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evan Ferguson</title>
   <meta name="description" content="Projects and ventures.">
-  <!-- Ink mark by default; swapped for the paper one when the OS is in dark
-       mode, since the tab bar follows the OS rather than the site's toggle. -->
+  <!-- Safari tints the tab bar from the page background, so the icon has to
+       follow the site's own theme, not the OS. Effective theme = the stored
+       toggle if set, else the OS preference — same rule as site.js. -->
   <link rel="icon" id="iconSvg" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" id="iconPng" href="favicon.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <script>
     (function () {
-      var q = window.matchMedia("(prefers-color-scheme: dark)");
+      var sys = window.matchMedia("(prefers-color-scheme: dark)");
       function paint() {
-        var d = q.matches;
-        document.getElementById("iconSvg").href = d ? "favicon-dark.svg" : "favicon.svg";
-        document.getElementById("iconPng").href = d ? "favicon-dark.png" : "favicon.png";
+        var stored = null;
+        try { stored = localStorage.getItem("theme"); } catch (_) {}
+        var dark = (stored || (sys.matches ? "dark" : "light")) === "dark";
+        var svg = document.getElementById("iconSvg");
+        var png = document.getElementById("iconPng");
+        if (svg) svg.href = dark ? "favicon-dark.svg" : "favicon.svg";
+        if (png) png.href = dark ? "favicon-dark.png" : "favicon.png";
       }
+      window.__paintIcon = paint;
       paint();
-      q.addEventListener ? q.addEventListener("change", paint) : q.addListener(paint);
+      sys.addEventListener ? sys.addEventListener("change", paint) : sys.addListener(paint);
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
