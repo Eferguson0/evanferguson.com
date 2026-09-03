@@ -40,8 +40,8 @@ const PROJECTS = [
     preview: "assets/previews/flyerz.webp",
     description: "Image & video-based restaurant discovery.",
     team: "4: myself, co-founder, designer, engineer",
-    result: "50+ discovery interviews, $10k funding, built team to 4",
-    skills: ["Co-founding", "Management", "Recruiting", "Pitching", "Customer discovery", "Incorporation"],
+    result: "50+ discovery interviews, $10k incubator funding, built team to 4",
+    skills: ["Co-founding", "Management", "Recruiting", "Pitching", "Customer discovery", "Competitive analysis", "Incorporation"],
   },
   {
     // Dates from the Drive folder (Feb–Apr 2025).
