@@ -77,7 +77,7 @@ const PROJECTS = [
         description: "Real-time body composition management.",
     team: "2: myself (full-stack), infra engineer",
     result: "15 users, frontend on TestFlight, backend on AWS",
-    skills: ["Swift", "Python", "FastAPI", "PostgreSQL", "Data modeling", "AWS", "Context engineering", "Data ingestion", "PostHog", "Claude Code"],
+    skills: ["Swift", "Python", "FastAPI", "PostgreSQL", "Data modeling", "Context engineering", "Data ingestion", "PostHog", "Claude Code"],
   },
   {
     start: "2026-04",
