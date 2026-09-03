@@ -5,9 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evan Ferguson</title>
   <meta name="description" content="Projects and ventures.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+  <!-- Ink mark by default; swapped for the paper one when the OS is in dark
+       mode, since the tab bar follows the OS rather than the site's toggle. -->
+  <link rel="icon" id="iconSvg" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" id="iconPng" href="favicon.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script>
+    (function () {
+      var q = window.matchMedia("(prefers-color-scheme: dark)");
+      function paint() {
+        var d = q.matches;
+        document.getElementById("iconSvg").href = d ? "favicon-dark.svg" : "favicon.svg";
+        document.getElementById("iconPng").href = d ? "favicon-dark.png" : "favicon.png";
+      }
+      paint();
+      q.addEventListener ? q.addEventListener("change", paint) : q.addListener(paint);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
