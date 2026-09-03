@@ -65,7 +65,7 @@ const PROJECTS = [
     preview: "assets/previews/aspire.webp",
     description: "AI co-pilot for job search.",
     team: "Solo",
-    result: "44 signups from paid ads \u2014 no willingness to pay at $20/mo",
+    result: "44 waitlist signups, 4 customer interviews",
     skills: ["Demand testing", "Positioning", "Meta Ads", "Ad copywriting", "Customer interviews", "Landing pages", "Market research", "Figma"],
   },
   {
