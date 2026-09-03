@@ -121,6 +121,5 @@
     const next = cur === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch (_) {}
-    if (window.__paintIcon) window.__paintIcon();
   });
 })();
