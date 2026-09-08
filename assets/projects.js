@@ -75,7 +75,7 @@ const PROJECTS = [
     url: "https://supahealth-landing.onrender.com",
     preview: "assets/previews/supahealth.webp",
         description: "Real-time body composition management.",
-    team: "2: myself (full-stack), infra engineer",
+    team: "2: myself (full-stack), DevOps engineer",
     result: "15 users, frontend on TestFlight, backend on AWS",
     skills: ["Swift", "Python", "FastAPI", "PostgreSQL", "Data modeling", "Context engineering", "Data ingestion", "PostHog", "Claude Code"],
   },
