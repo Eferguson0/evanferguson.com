@@ -40,8 +40,26 @@ const PROJECTS = [
     preview: "assets/previews/flyerz.webp",
     description: "Image & video-based restaurant discovery.",
     team: "4: myself (operations), co-founder (marketing), designer, engineer",
-    result: "$10k incubator funding, 50+ discovery interviews, built team to 4",
+    result:
+      "Startup in the Zahn Innovation Center, shipped an iOS MVP after 50 " +
+      "discovery interviews \u2014 wound down for lack of a B2B model",
     skills: ["Co-founding", "Management", "Recruiting", "Pitching", "Customer discovery", "Competitive analysis", "Incorporation"],
+  },
+  {
+    // Kickoff 08/08/2023; Phase 1 closeout report 07/18/24, meeting 07/25/24.
+    // (Contract itself ran to 12/31/2026 — this entry covers the Phase 1 build.)
+    // 23 = 1 PM + 6 eng + 6 TAM + 2 CS + 4 env. science + 4 Deloitte.
+    start: "2023-08",
+    end: "2024-07",
+    title: "State of Nevada (NZero)",
+    url: "https://nzero.com/case/net-zero-nevada-2/",
+    preview: "assets/previews/nevada.webp",
+    description: "Carbon management for state government.",
+    team: "23: myself (technical PM), engineering (6), TAM (6), CS (2), environmental science (4), Deloitte (4)",
+    result:
+      "Delivered energy, water, and emissions data for 453 buildings across " +
+      "13 state departments, leading to additional statewide contracts",
+    skills: ["Project management", "Partner delivery", "Stakeholder management", "Training delivery"],
   },
   {
     // Dates from the Drive folder (Feb–Apr 2025).
@@ -58,17 +76,6 @@ const PROJECTS = [
     skills: ["TypeScript", "Next.js", "Python", "CrewAI", "Anthropic API", "OpenAI API", "Agent memory", "Supabase", "Cursor"],
   },
   {
-    start: "2025-04",
-    end: "2025-10",
-    title: "Aspire",
-    url: "",
-    preview: "assets/previews/aspire.webp",
-    description: "AI co-pilot for job search.",
-    team: "Solo",
-    result: "44 waitlist signups, 4 discovery interviews",
-    skills: ["Demand testing", "Positioning", "Meta Ads", "Ad copywriting", "Discovery interviews", "Landing pages", "Figma"],
-  },
-  {
     start: "2025-07",
     end: "2026-07",
     title: "Supahealth",
@@ -76,7 +83,7 @@ const PROJECTS = [
     preview: "assets/previews/supahealth.webp",
         description: "Real-time body composition management.",
     team: "2: myself (full-stack), DevOps engineer",
-    result: "15 users, frontend on TestFlight, backend on AWS",
+    result: "Shipped an iOS beta to TestFlight on an AWS backend and onboarded 15 users",
     skills: ["Swift", "Python", "FastAPI", "PostgreSQL", "Data modeling", "Context engineering", "Data ingestion", "PostHog", "Claude Code"],
   },
   {
