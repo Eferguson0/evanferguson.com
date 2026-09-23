@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flyerz — Evan Ferguson</title>
+  <meta name="description" content="Image &amp; video-based restaurant discovery.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://evanferguson.com/flyerz/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://evanferguson.com/flyerz/">
+  <meta property="og:title" content="Flyerz">
+  <meta property="og:description" content="Image &amp; video-based restaurant discovery.">
+  <meta property="og:image" content="https://evanferguson.com/assets/previews/flyerz.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Flyerz">
+  <meta name="twitter:description" content="Image &amp; video-based restaurant discovery.">
+  <meta name="twitter:image" content="https://evanferguson.com/assets/previews/flyerz.webp">
+
+  <meta name="theme-color" content="#F6F4F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16161A" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@300;400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+  <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◑</button>
+
+  <header class="site-head">
+    <a href="/">Evan Ferguson</a>
+  </header>
+
+  <main>
+    <article class="article">
+  <div class="shell-claude">
+    <a class="backlink" href="/">Home</a>
+    <div class="hdr-a">
+      <span class="pill">2021–2022</span>
+      <h1 class="result-head">Making Yelp cool</h1>
+      <p class="project-name">Flyerz</p>
+    </div>
+    <div class="preview"><img src="/assets/previews/flyerz.webp" alt="Flyerz" decoding="async"></div>
+    <div class="kpis">
+      <dl class="kpi-meta">
+        <div class="row"><dt>Team:</dt><dd>4: myself, co-founder (marketing), designer, engineer</dd></div>
+        <div class="row"><dt>Role:</dt><dd>Operations</dd></div>
+        <div class="row"><dt>Competencies:</dt><dd>Co-founding · Management · Recruiting · Pitching · Customer discovery · Competitive analysis</dd></div>
+      </dl>
+      <div class="kpi">
+        <h3>50 interviews</h3>
+        <p>with Gen Z on restaurant search</p>
+      </div>
+      <div class="kpi">
+        <h3>3 board meetings</h3>
+        <p>to review progress or pivot strategy</p>
+      </div>
+    </div>
+    <div class="article-body">
+<h2>The problem</h2>
+
+<p>In college, I had a few friends who had instagram 'foodie' accounts where they would review restaurants. 
+  Whenever I needed to make a dinner reservation, I would always skim through these Instagram accounts and 
+  pick something from one of them. It was a great solution, but Instagram isn't designed for restaurant 
+  discovery.</p>
+
+<p>With the only real alternatives (at the time) being Yelp and Google Review, which to this day is still 
+  often just boomers complaining, I thought it would be cool to build a restaurant discovery platform 
+  based around how Gen Z search and share restaurant recommendations. We (my cofounder and I) were 
+  pitching to our friends 'if TikTok and Yelp had a baby.'</p>
+
+
+<figure class="brand-fig">
+  <svg class="brand" viewBox="0 0 960 600" role="img" aria-label="Positioning map. Across: low to high quality content and engagement. Up: poor to strong search and review functions. Yelp and Google Maps are top left: strong search, weak content. Instagram, Facebook and TikTok are bottom right: strong content, weak search. Word of mouth sits below the centre: trusted, but not searchable. Flyerz sits alone in the top right: strong search and strong content.">
+    <defs>
+      <linearGradient id="fz-bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#56CCF2"/>
+        <stop offset="1" stop-color="#2F80ED"/>
+      </linearGradient>
+      <marker id="fz-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#fff"/>
+      </marker>
+    </defs>
+
+    <rect width="960" height="600" rx="24" fill="url(#fz-bg)"/>
+
+    <line class="fz-axis" x1="70" y1="310" x2="890" y2="310" marker-start="url(#fz-arrow)" marker-end="url(#fz-arrow)"/>
+    <line class="fz-axis" x1="480" y1="80" x2="480" y2="540" marker-start="url(#fz-arrow)" marker-end="url(#fz-arrow)"/>
+
+    <text class="fz-axis-label" x="480" y="58" text-anchor="middle">Strong search / review functions</text>
+    <text class="fz-axis-label" x="480" y="574" text-anchor="middle">Poor search / review functions</text>
+    <text class="fz-axis-label" x="70" y="276">Low quality</text>
+    <text class="fz-axis-label" x="70" y="300">content / engagement</text>
+    <text class="fz-axis-label" x="890" y="276" text-anchor="end">High quality</text>
+    <text class="fz-axis-label" x="890" y="300" text-anchor="end">content / engagement</text>
+
+    <g class="fz-chip">
+      <rect x="205" y="138" width="110" height="44" rx="22"/>
+      <text x="260" y="167" text-anchor="middle">Yelp</text>
+    </g>
+    <g class="fz-chip">
+      <rect x="262" y="206" width="180" height="44" rx="22"/>
+      <text x="352" y="235" text-anchor="middle">Google Maps</text>
+    </g>
+    <g class="fz-chip fz-chip-open">
+      <rect x="505" y="466" width="196" height="44" rx="22"/>
+      <text x="603" y="495" text-anchor="middle">Word of mouth</text>
+    </g>
+    <g class="fz-chip">
+      <rect x="540" y="372" width="140" height="44" rx="22"/>
+      <text x="610" y="401" text-anchor="middle">Instagram</text>
+    </g>
+    <g class="fz-chip">
+      <rect x="696" y="372" width="140" height="44" rx="22"/>
+      <text x="766" y="401" text-anchor="middle">Facebook</text>
+    </g>
+    <g class="fz-chip">
+      <rect x="720" y="444" width="120" height="44" rx="22"/>
+      <text x="780" y="473" text-anchor="middle">TikTok</text>
+    </g>
+
+    <rect x="599" y="125" width="220" height="88" rx="44" fill="#fff" fill-opacity="0.16" stroke="#fff" stroke-opacity="0.55" stroke-width="2"/>
+    <image href="/assets/flyerz-pin.png" x="606" y="128" width="84" height="84"/>
+    <text class="fz-brand" x="686" y="184">Flyerz</text>
+  </svg>
+  <figcaption>Solution landscape</figcaption>
+</figure>
+
+
+<h2>The incubator</h2>
+
+<p>We worked on Flyerz as a team within San Diego State University's <a href="https://ziplaunchpad.sdsu.edu" rel="noopener">ZIP Launchpad</a> Incubator. This 
+  incubator helped guide us to build a viable company, with a product that people actually want, rather 
+  than building something nobody wants or would pay for. This guidance was provided through several 
+  high caliber resources:
+
+<ul>
+  <li><strong>Program structure:</strong> To move forwards in the program we had to prove the market was 
+    unsatisfied with the current solutions, and that there was a genuine need for our value proposition.</li>
+  <li><strong>Customer discovery:</strong> We did 50 consumer interviews and ~15 restaurant 
+    interviews before designing a survey to get more unbiased feedback.</li>
+  <li><strong>Domain experts:</strong> I met with a startup lawyer for entity selection (C-corp vs LLC) and 
+    IP risk, a software expert to review our technical plan, a UX expert to review the prototype.</li>
+  <li><strong>Legal:</strong> We developed a Founders agreement, NDAs, and intern agreements.</li>
+  <li><strong>Interns:</strong> We recruited our designer and developer, and attended workshops on hiring 
+    and general management.</li>
+  <li><strong>Advisory board:</strong> We presented our research to the incubator's advisory board each 
+    semester for strategic guidance and continuance in the program.</li>
+  <li><strong>Seed funding:</strong> We were awarded several rounds of seed funding to cover early stage expenses.</li>
+</ul>
+
+
+
+<h2>Takeaways</h2>
+
+<p>Ultimately we decided to shut down Flyerz due to lack of a viable business model, however, I had many 
+  takeaways from trying to start my first company. The top 2 were:</p>
+
+<ol>
+  <li><strong>Build something people (you don't know) actually want.</strong> We were building something a 
+    few of our friends wanted, and actively avoided gathering honest market sentiment. The incubator called
+    bullshit on this - as they should have - and helped us understand how to pursue true product market fit.</li>
+  <li><strong>Spend time deeply understanding the potential business models.</strong> From the start, we 
+    knew the two obvious business models (advertising and business subscription) were going to be an uphill battle.
+    A deeper assessment of this on day one could have helped us realize the potential dead ends we were pursuing.
+  </li>
+</ol>
+
+
+        </div>
+    
+  </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="colophon">
+        <span class="label">© 2026 Evan Ferguson</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/theme.js"></script>
+  <script src="/assets/zoom.js"></script>
+</body>
+</html>

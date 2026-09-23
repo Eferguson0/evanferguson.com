@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relay — Evan Ferguson</title>
+  <meta name="description" content="Quickly relay information with AI.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://evanferguson.com/relay-project/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://evanferguson.com/relay-project/">
+  <meta property="og:title" content="Relay">
+  <meta property="og:description" content="Quickly relay information with AI.">
+  <meta property="og:image" content="https://evanferguson.com/assets/previews/relay.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Relay">
+  <meta name="twitter:description" content="Quickly relay information with AI.">
+  <meta name="twitter:image" content="https://evanferguson.com/assets/previews/relay.webp">
+
+  <meta name="theme-color" content="#F6F4F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16161A" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+  <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◑</button>
+
+  <header class="site-head">
+    <a href="/">Evan Ferguson</a>
+  </header>
+
+  <main>
+    <article class="article">
+  <div class="shell-claude">
+    <a class="backlink" href="/">Home</a>
+    <div class="hdr-a">
+      <span class="pill">2025</span>
+      <h1 class="result-head">Accelerating communication through harness design &amp; agent memory</h1>
+      <p class="project-name">Relay</p>
+    </div>
+    <div class="preview"><img src="/assets/previews/relay.webp" alt="Relay" decoding="async"></div>
+    <div class="kpis">
+      <dl class="kpi-meta">
+        <div class="row"><dt>Team:</dt><dd>Solo</dd></div>
+        <div class="row"><dt>Stack:</dt><dd>Python · Flask · CrewAI · Anthropic API · OpenAI API · Agent memory · Supabase · Cursor</dd></div>
+      </dl>
+      <div class="kpi">
+        <h3>6 agents</h3>
+        <p>channel suggestion, recipient lookup, subject lines, drafting and refinement</p>
+      </div>
+      <div class="kpi">
+        <h3>10 style dimensions</h3>
+        <p>extracted from every draft; the last three condition the next</p>
+      </div>
+    </div>
+    <div class="article-body">
+      <h2>The problem</h2>
+
+
+      <p>Working within Customer Success, I spend a fair amount of my day relaying information. 
+        With LLMs being great at summarizing and drafting content, there was a clear use case to build a simple
+        UI that would allow me to quickly take a message received, add context for actions that need to be taken based on the request, and have an LLM draft a new message
+        for a given channel. This would cut out the low-value work of drafting, and allow for more capacity of high-value work like strategy.</p>
+
+  <h2>The solution</h2>
+
+<p>Relay essentially allowed content drafting iteration to move outside of the LLM apps and into an interface where the user could more easily iterate/edit the message.
+  Relay had an interface where the user pasted the source message/context (email, Slack, Google Docs, etc.), added relevant context, and select the 
+  desired channel. For example, if a client emailed me with a request, 
+  I could note 'forward to engineering and include key fields', and Relay would draft it to #engineering.
+  The goal was to remove the low-value first-draft work and accelerate getting the final draft sent.</p>
+
+<figure>
+  <img src="/relay/forwarding.webp" alt="Relay's new-draft screen: a client email pasted as context, Slack selected, and the instruction 'Ask engineering to send asap'" loading="lazy" decoding="async">
+</figure>
+
+<p>To try to avoid AI slop, I implemented a lightweight memory system. Whenever a user copied a draft, 
+  Relay treated that as a proxy for approval and used GPT-4 to log its purpose, tone, structure, and 
+  other stylistic patterns in Supabase. When drafting a similar message later, an agent would pull the three 
+  most recent messages with the same type and purpose, create a compact style profile from them, and add 
+  it back into the prompt.</p>
+
+<p>By the time I finished the MVP, Anthropic had announced MCP. I found more value in the flexibility of 
+  MCP-based workflows than continuing to invest in Relay’s editable UI.</p>
+
+
+
+<h2>Agents</h2>
+
+
+<p>Relay had several specialized agents to process/draft information, and learn the user's writing style. Each was a CrewAI agent with a single task, run in sequence, with the app deciding what came next rather than the framework:
+
+  <ul>
+  <li><strong>Message purpose:</strong> Before drafting, a model call classified the intent of the received message 
+    (question, update, request, agenda, etc.), so the draft would better match the situation.</li>
+  <li><strong>Slack agents:</strong> Two agents. The first reviewed the content of a message and suggested the most 
+    appropriate Slack channel for it. The second drafted the Slack message from the provided context.</li>
+  <li><strong>Email agents:</strong> Three agents. The first to identify the appropriate recipient's email, the second to write a concise subject line, 
+    and the third to draft the actual email content.</li>
+  <li><strong>Message refinement agent:</strong> This agent would help users revise a draft, using the original 
+    context and user feedback to make targeted changes without rewriting everything from scratch or losing context.</li>
+  <li><strong>Style learning:</strong> Once a user finalized a message, a model call analyzed its purpose, tone, 
+    structure, and writing patterns to gradually develop a better understanding of the user's communication style.</li>
+
+</ul>
+
+<p>I opted to keep orchestration in the form of selecting the desired channel in the UI, rather than having a crew review and pass off. Implementing a crew would have been a cool UX, but slower and overkill.</p>
+        </div>
+    <a class="cta" href="/relay/" rel="noopener">Visit Relay</a>
+  </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="colophon">
+        <span class="label">© 2026 Evan Ferguson</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/theme.js"></script>
+  <script src="/assets/zoom.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delivering Nevada (NZero) — Evan Ferguson</title>
+  <meta name="description" content="Data management for state government.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://evanferguson.com/nevada/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://evanferguson.com/nevada/">
+  <meta property="og:title" content="Delivering Nevada (NZero)">
+  <meta property="og:description" content="Data management for state government.">
+  <meta property="og:image" content="https://evanferguson.com/assets/previews/nevada.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Delivering Nevada (NZero)">
+  <meta name="twitter:description" content="Data management for state government.">
+  <meta name="twitter:image" content="https://evanferguson.com/assets/previews/nevada.webp">
+
+  <meta name="theme-color" content="#F6F4F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16161A" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+  <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◑</button>
+
+  <header class="site-head">
+    <a href="/">Evan Ferguson</a>
+  </header>
+
+  <main>
+    <article class="article">
+  <div class="shell-claude">
+    <a class="backlink" href="/">Home</a>
+    <div class="hdr-a">
+      <span class="pill">2023–2024</span>
+      <h1 class="result-head">Centralizing energy, water &amp; emissions data for Nevada</h1>
+      <p class="project-name">Delivering Nevada (NZero)</p>
+    </div>
+    <div class="preview"><img src="/assets/previews/nevada.webp" alt="Delivering Nevada (NZero)" decoding="async"></div>
+    <div class="kpis">
+      <dl class="kpi-meta">
+        <div class="row"><dt>Team:</dt><dd>23: myself, engineering (6), TAM (6), CS (2), environmental science (4), Deloitte (4)</dd></div>
+        <div class="row"><dt>Role:</dt><dd>Technical PM</dd></div>
+        <div class="row"><dt>Competencies:</dt><dd>Project management · Partner delivery · Stakeholder management · Training delivery</dd></div>
+      </dl>
+      <div class="kpi">
+        <h3>453 sites</h3>
+        <p>reporting energy, water and emissions across 13 state departments</p>
+      </div>
+      <div class="kpi">
+        <h3>+4M data points</h3>
+        <p>per year centralized</p>
+      </div>
+    </div>
+    <div class="article-body">
+<h2>Background</h2>
+
+     <p>In November of 2019, the Governor of Nevada, Steve Sisolak signed Executive Order 2019-22, 
+      directing state agencies to develop a comprehensive state climate strategy, to include the reduction 
+      of carbon emissions from electricity, transportation, buildings, state operations, and other sectors. 
+      NZero submitted a bid to the state's RFP, and was awarded the contract in partnership with Deloitte.
+      NZero was to provide carbon tracking services across all state owned buildings, and with this energy
+      & emissions data, Deloitte was to provide departmental analysis in addition to a statewide capital 
+      planning report. </p>
+
+     <h2>The challenge</h2>
+     <p>The relevant data had to be sourced across 13 agencies, each with its own systems and data owners. 
+      I joined shortly after kickoff to manage data ingestion: tracking what each agency sent, and working 
+      with data teams to ensure data was complete and accurate post-processing. This helped ensure that the data 
+      being provided to Deloitte for analysis was reliable.</p>
+
+
+<figure class="diagram ontology">
+  <p class="lv-title">How the data nests</p>
+  <svg class="nest" viewBox="-4 -4 568 368" aria-label="One dataset subdivided: the state splits into 13 departments, those into 453 sites, each site carrying about three meters, with electricity read hourly and gas and water on the billing cycle."></svg>
+  <ul class="lv-list">
+    <li class="lv" data-count="1" data-label="Organization">
+      <span class="lv-name">Organization</span>
+      <span class="lv-count">1</span>
+      <span class="lv-note">Governor&rsquo;s Office of Energy, one dataset</span>
+    </li>
+    <li class="lv" data-count="13" data-label="Departments">
+      <span class="lv-name">Departments</span>
+      <span class="lv-count">13</span>
+      <span class="lv-note">each with data owners</span>
+    </li>
+    <li class="lv" data-count="453" data-label="Sites">
+      <span class="lv-name">Sites</span>
+      <span class="lv-count">453</span>
+      <span class="lv-note">16.9M sq ft — 63% of state-owned space</span>
+    </li>
+    <li class="lv" data-count="1359" data-label="Meters">
+      <span class="lv-name">Meters</span>
+      <span class="lv-count">~1,359</span>
+      <span class="lv-note">assumes typical 1 meter per site/resource</span>
+    </li>
+    <li class="lv" data-count="3979152" data-label="Data points">
+      <span class="lv-name">Data points</span>
+      <span class="lv-count">~4M/yr</span>
+      <span class="lv-note">assumes hourly electricity data, monthly gas and water statements</span>
+    </li>
+  </ul>
+  <figcaption>State, department and site counts from <a href="https://nzero.com/case/net-zero-nevada-2/" rel="noopener">NZero's case study</a>. Meters and readings are estimates.</figcaption>
+</figure>
+
+     <h2>Results</h2>
+
+<p>Onboarding finished in roughly nine months, and took a team of nearly 25 people. In the end, the team (NZero & Deloitte) had delivered:</p>
+
+<ul>
+  <li><strong>453 sites</strong> reporting energy, water and emissions across 13 departments.</li>
+  <li><strong>16.9 million square feet</strong> — 100% of the state square footage consuming energy.</li>
+  <li><strong>47 state employees trained</strong> to manage energy & emissions through the platform.</li>
+  <li><strong>A statewide capital planning report</strong>, built on that baseline alongside Deloitte&rsquo;s departmental analysis.</li>
+</ul>
+  
+        </div>
+    <a class="cta" href="https://nzero.com/case/net-zero-nevada-2/" rel="noopener">Article</a>
+  </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="colophon">
+        <span class="label">© 2026 Evan Ferguson</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/theme.js"></script>
+  <script src="/assets/zoom.js"></script>
+  <script src="/assets/levels.js"></script>
+</body>
+</html>

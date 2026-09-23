@@ -18,8 +18,12 @@
 
   --accent: #2F6E82;
 
-  --font-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Three roles, not three fonts for their own sake: a classical display
+     serif carries the headings, a text serif carries the prose, and the sans
+     is reserved for the small uppercase marks - years, labels, tags. */
+  --font-display: "Cormorant Garamond", "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-text:    "Newsreader", Georgia, "Times New Roman", serif;
+  --font-ui:      "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --measure: 60ch;
   --gutter: clamp(22px, 6vw, 60px);
@@ -43,6 +47,7 @@
     --accent: #7FBACC;
     color-scheme: dark;
   }
+  :root:not([data-theme="light"]) body { font-weight: 400; }
 }
 
 :root[data-theme="dark"] {
@@ -57,6 +62,7 @@
   --accent: #7FBACC;
   color-scheme: dark;
 }
+:root[data-theme="dark"] body { font-weight: 400; }
 
 /* --------------------------------------------------------------- reset --- */
 
@@ -66,9 +72,10 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.65;
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-weight: 350;
+  line-height: 1.72;
   font-feature-settings: "tnum" 1;
   -webkit-font-smoothing: antialiased;
 }
@@ -79,8 +86,8 @@ img { max-width: 100%; }
 .shell { max-width: 880px; margin: 0 auto; padding: 0 var(--gutter); }
 
 .label {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-family: var(--font-ui);
+  font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-4);
@@ -92,10 +99,11 @@ img { max-width: 100%; }
 .masthead { padding: clamp(72px, 16vw, 180px) 0 clamp(56px, 10vw, 110px); }
 
 .masthead h1 {
-  font-size: clamp(30px, 5.2vw, 46px);
-  font-weight: 550;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6.6vw, 60px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.06;
   margin: 0;
 }
 
@@ -110,7 +118,7 @@ img { max-width: 100%; }
   margin-top: clamp(32px, 5vw, 48px);
 }
 .contact-row a {
-  font-family: var(--font-mono); font-size: 12px;
+  font-family: var(--font-ui); font-size: 12px;
   color: var(--ink-3); text-decoration: none;
   border-bottom: 1px solid var(--rule-strong); padding-bottom: 2px;
   transition: color .18s var(--ease), border-color .18s var(--ease);
@@ -128,13 +136,14 @@ img { max-width: 100%; }
   margin-bottom: 18px;
 }
 .current-dates {
-  font-family: var(--font-mono); font-size: 12px;
-  letter-spacing: 0.06em; color: var(--ink-4);
+  font-family: var(--font-ui); font-size: 12px;
+  letter-spacing: 0.02em; color: var(--ink-4);
 }
 
 .current h2 {
-  font-size: clamp(24px, 3.6vw, 33px);
-  font-weight: 550; letter-spacing: -0.02em; line-height: 1.18;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.6vw, 43px);
+  font-weight: 500; letter-spacing: 0; line-height: 1.14;
   margin: 0 0 14px;
 }
 .current h2 a { text-decoration: none; }
@@ -142,11 +151,13 @@ img { max-width: 100%; }
   content: " \2197"; font-size: 0.62em; color: var(--ink-4);
   transition: color .18s var(--ease);
 }
+/* A title that stays on the site points along, not away. */
+.current h2 a.to-page::after { content: " \2192"; }
 .current h2 a:hover, .current h2 a:hover::after { color: var(--accent); }
 
 .current p { margin: 0; max-width: var(--measure); line-height: 1.66; }
-.current .summary { color: var(--ink); font-size: 17px; }
-.current .value { margin-top: 8px; color: var(--ink-3); font-size: 16px; }
+.current .summary { color: var(--ink); font-size: 18px; }
+.current .value { margin-top: 8px; color: var(--ink-3); font-size: 17px; }
 .current .value + .preview, .current .summary + .preview { margin-top: clamp(26px, 4vw, 36px); }
 .entry .summary + .preview { margin-top: clamp(22px, 3.5vw, 32px); }
 
@@ -183,8 +194,8 @@ img { max-width: 100%; }
 .entry:last-child { padding-bottom: 0; }
 
 .entry-year {
-  font-family: var(--font-mono);
-  font-size: 12px; letter-spacing: 0.06em;
+  font-family: var(--font-ui);
+  font-size: 12px; letter-spacing: 0.02em;
   line-height: 1.5;
   color: var(--ink-3);
   text-align: right; padding-right: 22px;
@@ -206,27 +217,29 @@ img { max-width: 100%; }
 .entry:hover::before { background: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
 
 .entry h2 {
-  font-size: clamp(19px, 2.4vw, 23px);
-  font-weight: 550; letter-spacing: -0.015em; line-height: 1.3;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.1vw, 29px);
+  font-weight: 500; letter-spacing: 0; line-height: 1.22;
   margin: 0 0 10px;
 }
 .entry h2 a { text-decoration: none; }
 .entry h2 a::after {
-  content: " ↗"; font-size: 0.68em; color: var(--ink-4);
+  content: " \2197"; font-size: 0.68em; color: var(--ink-4);
   transition: color .18s var(--ease);
 }
+.entry h2 a.to-page::after { content: " \2192"; }
 .entry h2 a:hover { color: var(--accent); }
 .entry h2 a:hover::after { color: var(--accent); }
 
 /* Two lines: what it is, then what I did. Weight and colour separate them,
    so neither needs a label. */
 .entry p { margin: 0; max-width: var(--measure); }
-.entry .summary { color: var(--ink); font-size: 16px; }
+.entry .summary { color: var(--ink); font-size: 17px; }
 .entry .value {
   margin-top: 7px;
   color: var(--ink-3);
 }
-/* Labelled record. Mono micro-labels match the CURRENTLY / PREVIOUSLY marks. */
+/* Labelled record. The micro-labels match the CURRENTLY / PREVIOUSLY marks. */
 .rec {
   display: grid; grid-template-columns: 62px 1fr;
   gap: 4px 20px;
@@ -234,12 +247,12 @@ img { max-width: 100%; }
   max-width: var(--measure);
 }
 .rec dt { padding-top: 3px; }
-/* Values share the labels' family. Prose is sans, data is mono - the same
+/* Values share the labels' family. Prose is serif, data is sans - the same
    split the skills line and the year rail already use. */
 .rec dd {
   margin: 0;
-  font-family: var(--font-mono);
-  font-size: 12.5px; letter-spacing: 0.02em; line-height: 1.7;
+  font-family: var(--font-ui);
+  font-size: 12px; letter-spacing: 0; line-height: 1.7;
   color: var(--ink-2);
 }
 @media (max-width: 620px) {
@@ -249,8 +262,8 @@ img { max-width: 100%; }
 }
 
 /* Facts rather than prose: who did it, then what happened to it. */
-.entry .role { color: var(--ink); font-size: 16px; }
-.entry .outcome { margin-top: 6px; color: var(--ink-3); font-size: 15px; }
+.entry .role { color: var(--ink); font-size: 17px; }
+.entry .outcome { margin-top: 6px; color: var(--ink-3); font-size: 16px; }
 .entry .role + .preview, .entry .outcome + .preview { margin-top: clamp(22px, 3.5vw, 32px); }
 .entry .value, .entry .summary { margin-bottom: 0; }
 .entry .value + .preview, .entry .summary + .preview { margin-top: clamp(22px, 3.5vw, 32px); }
@@ -282,19 +295,423 @@ a.preview:hover { border-color: var(--rule-strong); }
 .preview.empty span {
   background: var(--paper);
   padding: 6px 12px;
-  font-family: var(--font-mono); font-size: 11px;
-  color: var(--ink-4); letter-spacing: 0.06em;
+  font-family: var(--font-ui); font-size: 11px;
+  color: var(--ink-4); letter-spacing: 0.02em;
 }
 
 .skills {
   margin-top: 16px;
-  font-family: var(--font-mono);
-  font-size: 11px; letter-spacing: 0.05em;
+  font-family: var(--font-ui);
+  font-size: 10.5px; letter-spacing: 0.02em;
   color: var(--ink-4);
-  line-height: 1.9;
+  line-height: 1.95;
 }
 .skills span::after { content: " · "; color: var(--rule-strong); }
 .skills span:last-child::after { content: ""; }
+
+/* --------------------------------------------------------------- article */
+
+/* A project's own page. Narrower than the front page - this is reading width,
+   not a listing - and with no year rail, so the record does the same job the
+   timeline row used to. */
+
+.article { padding: clamp(40px, 7vw, 72px) 0 clamp(72px, 11vw, 120px); }
+.article .shell { max-width: 720px; }
+
+/* Back to the index. Sits above the title as a mark, not a button. */
+.backlink {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-4); text-decoration: none;
+  margin-bottom: clamp(38px, 7vw, 66px);
+  transition: color .18s var(--ease);
+}
+.backlink::before { content: "\2190\00a0\00a0"; }
+.backlink:hover { color: var(--accent); }
+
+.article-dates {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 12px; letter-spacing: 0.02em;
+  color: var(--ink-4);
+  margin-bottom: 12px;
+}
+
+.article h1 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5.4vw, 52px);
+  font-weight: 400; letter-spacing: 0; line-height: 1.08;
+  margin: 0;
+}
+
+/* The one-line description, carried over from the front page as the standfirst. */
+.article .dek {
+  margin: 18px 0 0;
+  font-size: clamp(19px, 2.3vw, 22px);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 34ch;
+}
+
+.article .preview { margin-top: clamp(34px, 5.5vw, 54px); }
+/* The record closes the page as a fact panel. The hairline marks where the
+   prose stops, the same way the timeline and colophon are marked. */
+.article .rec {
+  margin: clamp(38px, 6vw, 60px) 0 0;
+  padding-top: clamp(30px, 4.5vw, 42px);
+  border-top: 1px solid var(--rule);
+  max-width: none;
+}
+
+/* ---- article body -------------------------------------------------------
+
+   Follows a16z's article pages: the section headers are the body serif set
+   bold and a step larger, not the display serif, so a long read stays one
+   texture. Body is 17/1.75 with a blank line between paragraphs.
+
+   Measure is capped well inside the shell - the preview above it runs the
+   full width, but prose past ~75 characters a line gets tiring.            */
+
+.article-body {
+  margin-top: clamp(34px, 5.5vw, 54px);
+  max-width: 34em;
+}
+
+.article-body > *:first-child { margin-top: 0; }
+
+.article-body p {
+  margin: 0 0 1.55em;
+  line-height: 1.75;
+  font-size: 17px;
+}
+
+/* Bolded section header. The space above is what separates sections - there
+   is no rule and no change of family. */
+.article-body h2 {
+  font-family: var(--font-text);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.011em;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 2.6em 0 0.7em;
+}
+
+.article-body h3 {
+  font-family: var(--font-text);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 2em 0 0.55em;
+}
+
+.article-body strong { font-weight: 600; color: var(--ink); }
+.article-body em { font-style: italic; }
+
+.article-body ul, .article-body ol {
+  margin: 0 0 1.55em;
+  padding-left: 1.3em;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.article-body li { margin-bottom: 0.5em; }
+.article-body li::marker { color: var(--ink-4); }
+
+/* Links in prose carry a hairline rather than a colour, so a paragraph with
+   several of them doesn't turn speckled. */
+.article-body a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-strong);
+  transition: color .18s var(--ease), border-color .18s var(--ease);
+}
+.article-body a:hover { color: var(--accent); border-color: var(--accent); }
+
+.article-body blockquote {
+  margin: 2em 0;
+  padding-left: 1.4em;
+  border-left: 2px solid var(--rule-strong);
+  color: var(--ink-2);
+  font-size: 19px;
+  line-height: 1.6;
+}
+.article-body blockquote p { font-size: inherit; margin-bottom: 0.8em; }
+.article-body blockquote p:last-child { margin-bottom: 0; }
+.article-body figure { margin: 2em 0; }
+.article-body figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule, rgba(0,0,0,0.1));
+  border-radius: 8px;
+  cursor: zoom-in;
+}
+
+.article-body figcaption {
+  margin-top: 0.7em;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+/* Inline SVG diagrams. Colours come from the theme tokens, so they follow
+   dark mode. */
+.diagram svg { display: block; width: 100%; height: auto; cursor: zoom-in; }
+dialog.zoom svg { cursor: zoom-out; }
+.dm-tbl  { fill: var(--paper-raised); stroke: var(--rule-strong); stroke-width: 1.2; }
+.dm-out  { stroke: var(--ink-3); }
+.dm-job  { fill: color-mix(in srgb, var(--accent) 12%, var(--paper-raised)); stroke: var(--accent); stroke-width: 1.4; }
+.dm-name { font: 600 15px ui-monospace, "SF Mono", Menlo, monospace; fill: var(--ink); }
+.dm-desc { font: 400 13px var(--font-ui); fill: var(--ink-2); }
+.dm-em   { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; fill: var(--ink); }
+.dm-label { font: 600 11px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ink-3); }
+.dm-note { font: italic 400 12.5px var(--font-ui); fill: var(--ink-3); }
+.dm-line { stroke: var(--ink-3); stroke-width: 1.4; fill: none; }
+.dm-dash { stroke-dasharray: 5 4; }
+.dm-head { fill: var(--ink-3); }
+
+/* Full-size view opened by assets/zoom.js */
+dialog.zoom {
+  max-width: none;
+  max-height: none;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  background: rgba(10, 10, 12, 0.85);
+  display: none;
+  place-items: center;
+  cursor: zoom-out;
+}
+dialog.zoom[open] { display: grid; }
+dialog.zoom::backdrop { background: transparent; }
+dialog.zoom svg {
+  width: min(100%, 1400px);
+  height: auto;
+  max-height: 100%;
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+dialog.zoom img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+}
+
+.article-body hr {
+  border: 0; border-top: 1px solid var(--rule);
+  margin: 2.6em 0;
+}
+
+@media (max-width: 620px) {
+  .article-body p, .article-body ul, .article-body ol { font-size: 16px; }
+  .article-body h2 { font-size: 19px; }
+  .article-body h3 { font-size: 16px; }
+}
+
+/* ------------------------------------------------------------ site head ---
+
+   A wordmark centred at the top of every project page, the way a16z carries
+   theirs. The back link below it stays: the wordmark reads as identity, the
+   back link as navigation. The front page has the masthead instead.
+   --------------------------------------------------------------------- */
+
+.site-head {
+  padding: clamp(24px, 3vw, 36px) var(--gutter);
+  text-align: center;
+}
+.site-head a {
+  font-family: var(--font-display);
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color .18s var(--ease);
+}
+.site-head a:hover { color: var(--accent); }
+
+/* ------------------------------------------------- project page headers ---
+
+   Two header treatments, picked per project by `layout` in projects.js.
+   Both put the result in the h1 and step the project name down beneath it.
+
+   "a16z"   - a near-full-width canvas, left aligned, with the headline capped
+              well inside it so the right stays open, a visit link parked far
+              right, and a rule spanning the whole canvas. The body below
+              returns to the ordinary reading column.
+   "claude" - one 1220px container that the preview and a three-column facts
+              band both fill, with the headline centred above them.
+   --------------------------------------------------------------------- */
+
+/* ---- shared ---- */
+.result-head {
+  font-family: var(--font-display);
+  font-weight: 400; letter-spacing: 0;
+  /* the headline carries figures now, and Cormorant's oldstyle ones read as
+     running text rather than as numbers */
+  font-variant-numeric: lining-nums;
+}
+
+/* ---- a16z ---- */
+.hdr-wide { max-width: 1760px; margin: 0 auto; padding: 0 clamp(22px, 5vw, 96px); }
+
+.hdr-z {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 clamp(24px, 4vw, 56px); align-items: end;
+}
+.hdr-z .eyebrow {
+  display: block; font-family: var(--font-ui); font-size: 13px;
+  letter-spacing: 0.02em; color: var(--ink-4); margin-bottom: 14px;
+}
+.hdr-z h1 {
+  margin: 0;
+  font-size: clamp(32px, 3.4vw, 56px); line-height: 1.08;
+  max-width: 12em;
+}
+/* the slot a16z gives the author byline */
+.hdr-z .project-name {
+  margin: 20px 0 0; font-family: var(--font-ui);
+  font-size: 13px; line-height: 1.55; color: var(--ink);
+}
+.cta {
+  display: inline-block;
+  font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-3); text-decoration: none;
+  border: 1px solid var(--rule-strong); padding: 14px 26px; white-space: nowrap;
+  transition: color .18s var(--ease), border-color .18s var(--ease);
+}
+.cta::after { content: "\00a0\2197"; }
+.cta:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Closing the page rather than opening it: same mark, centred under the
+   prose in the claude layout and left aligned in the plain one. */
+.shell-claude > .cta {
+  display: block; width: max-content;
+  margin: clamp(40px, 5.5vw, 60px) auto 0;
+}
+.shell > .cta { margin-top: clamp(34px, 5vw, 48px); }
+.hdr-z-rule { margin-top: clamp(28px, 3.5vw, 44px); border-top: 1px solid var(--rule); }
+.hdr-gap { height: clamp(34px, 5vw, 60px); }
+
+/* Team and stack, two up, under the preview. */
+.credits {
+  margin-top: clamp(28px, 4.5vw, 40px);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(28px, 4.5vw, 52px);
+}
+.credits dt {
+  font-family: var(--font-ui); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4);
+  margin-bottom: 4px;
+}
+.credits dd {
+  margin: 0; font-family: var(--font-ui); font-size: 12px;
+  line-height: 1.6; color: var(--ink-2);
+}
+.credits + .article-body {
+  margin-top: clamp(28px, 4.5vw, 40px);
+  padding-top: clamp(28px, 4.5vw, 40px);
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 820px) {
+  .hdr-z { grid-template-columns: 1fr; gap: 26px 0; align-items: start; }
+  .hdr-z h1 { max-width: none; }
+  /* grid items stretch by default; the link is a mark, not a full-width button */
+  .hdr-z .cta { justify-self: start; }
+}
+@media (max-width: 620px) { .credits { grid-template-columns: 1fr; gap: 18px 0; } }
+
+/* ---- claude ---- */
+.shell-claude { max-width: 1440px; margin: 0 auto; padding: 0 clamp(22px, 5vw, 60px); }
+
+.hdr-a { text-align: center; }
+.hdr-a .pill {
+  display: inline-block; font-family: var(--font-ui); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+  border: 1px solid var(--rule-strong); border-radius: 999px;
+  padding: 7px 16px; margin-bottom: clamp(24px, 3.5vw, 34px);
+}
+.hdr-a h1 {
+  margin: 0 auto;
+  font-size: clamp(34px, 4.4vw, 64px); line-height: 1.06;
+  /* em, not ch: Cormorant's zero is narrow enough that 20ch came out at 610px
+     against a 1320px container, forcing three lines out of eleven words. */
+  max-width: 15em;
+}
+.hdr-a .project-name {
+  margin: clamp(22px, 3vw, 30px) 0 0;
+  font-family: var(--font-text);
+  /* Medium, not bold: at 600 the name outweighed the headline above it and
+     pulled the eye down before the sentence had been read. */
+  font-size: clamp(17px, 1.9vw, 20px); font-weight: 500; letter-spacing: -0.005em;
+  color: var(--ink-2);
+}
+/* The preview sits narrower than the facts band and centred under the
+   centred header - at full container width the screenshot dominates the page
+   before the reader reaches a single fact. */
+.hdr-a + .preview {
+  margin: clamp(40px, 5.5vw, 64px) auto 0;
+  max-width: 980px;
+}
+
+/* Three equal columns: the record, then the results as phrases. */
+.kpis {
+  margin: clamp(34px, 4.5vw, 52px) auto 0;
+  max-width: 980px;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0;
+}
+.kpis > * + * { border-left: 1px solid var(--rule); padding-left: clamp(26px, 3vw, 40px); }
+.kpis > *:not(:last-child) { padding-right: clamp(26px, 3vw, 40px); }
+
+.kpi-meta { display: grid; gap: 11px 0; margin: 0; }
+.kpi-meta .row { display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 0 8px; }
+.kpi-meta dt { font-family: var(--font-ui); font-size: 12px; color: var(--ink); }
+.kpi-meta dd {
+  margin: 0; font-family: var(--font-ui); font-size: 12px;
+  line-height: 1.55; color: var(--ink-3);
+}
+
+.kpi h3 {
+  margin: 0; font-family: var(--font-display);
+  font-size: clamp(23px, 2.3vw, 28px); font-weight: 500; letter-spacing: 0;
+  line-height: 1.15; color: var(--ink); font-variant-numeric: lining-nums;
+}
+.kpi p {
+  margin: 12px 0 0; font-family: var(--font-ui); font-size: 12px;
+  line-height: 1.55; color: var(--ink-3);
+}
+
+/* Prose keeps its reading measure but sits centred in the wide container,
+   rather than hanging off the left edge of it. */
+.shell-claude .article-body { max-width: 34em; margin-inline: auto; }
+/* The divider belongs to the band, not to the prose - on the prose it would
+   shrink to the reading measure and read as a floating line. :has() keeps it
+   off pages that have no body copy to divide from. */
+.kpis:has(+ .article-body) {
+  padding-bottom: clamp(36px, 5vw, 56px);
+  border-bottom: 1px solid var(--rule);
+}
+.kpis + .article-body { margin-top: clamp(40px, 5.5vw, 64px); }
+
+@media (max-width: 900px) {
+  .kpis { grid-template-columns: 1fr; gap: clamp(24px, 4.5vw, 30px) 0; }
+  .kpis > * + * {
+    border-left: 0; padding-left: 0;
+    border-top: 1px solid var(--rule); padding-top: clamp(22px, 4vw, 26px);
+  }
+  .kpis > *:not(:last-child) { padding-right: 0; }
+  .kpi-meta .row { grid-template-columns: 100px minmax(0, 1fr); }
+}
 
 /* ---------------------------------------------------------------- footer */
 
@@ -344,4 +761,82 @@ a.preview:hover { border-color: var(--rule-strong); }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal.in { opacity: 1; transform: none; transition: none; }
+}
+
+/* Figures drawn in a project's own brand rather than the site theme, so
+   their colours stay fixed in dark mode. */
+.brand-fig svg { display: block; width: 100%; height: auto; cursor: zoom-in; border-radius: 10px; }
+.fz-axis { stroke: #fff; stroke-width: 2.5; }
+.fz-axis-label { font: 600 19px "Poppins", var(--font-ui); fill: #fff; }
+.fz-chip rect { fill: #fff; }
+.fz-chip text { font: 600 19px "Poppins", var(--font-ui); fill: #2F80ED; }
+.fz-brand { font: 700 36px "Poppins", var(--font-ui); fill: #fff; }
+dialog.zoom svg.brand { background: none; padding: 0; border-radius: 16px; }
+.fz-chip-open rect { fill: #fff; fill-opacity: 0.12; stroke: #fff; stroke-width: 2; stroke-dasharray: 7 5; }
+.fz-chip-open text { fill: #fff; }
+
+/* Nested-circles figure on /nevada/. The list below the drawing carries the
+   same numbers, so the figure still reads without assets/levels.js.
+   Selectors carry .article-body so they beat the prose defaults. */
+.article-body .ontology { margin: 2.6em 0; }
+.article-body .lv-title {
+  font: 600 11px var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 14px;
+}
+.article-body .nest { display: block; width: 100%; max-width: 480px; margin: 0 auto; height: auto; }
+.article-body .nest g { opacity: 0; transition: opacity .3s var(--ease); }
+.article-body .nest g.on { opacity: 1; }
+.article-body .nest .box  { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.article-body .nest .dept { fill: none; stroke: var(--rule-strong); stroke-width: 1; }
+.article-body .nest .site { fill: var(--accent); fill-opacity: 0.16; stroke: var(--accent); stroke-opacity: 0.55; stroke-width: 0.6; }
+.article-body .nest .meter { stroke: var(--accent); stroke-opacity: 0.35; stroke-width: 0.5; }
+.article-body .nest .hour { fill: var(--accent); fill-opacity: 0.14; }
+
+.article-body .lv-list { list-style: none; margin: 22px 0 0; padding: 0; }
+.article-body .lv {
+  display: grid;
+  grid-template-columns: 120px 90px 1fr;
+  gap: 4px 18px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  transition: opacity .25s var(--ease);
+}
+.article-body .lv:last-child { border-bottom: 1px solid var(--rule); }
+.article-body .lv.dim { opacity: 0.3; }
+.article-body .lv-name {
+  font: 500 12px var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.article-body .lv-count {
+  font: 400 22px var(--font-display);
+  color: var(--ink);
+  font-variant-numeric: lining-nums;
+}
+.article-body .lv-note { font: 400 13.5px/1.45 var(--font-ui); color: var(--ink-3); }
+
+.article-body .lv-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.article-body .lv-controls button {
+  font: 500 11px var(--font-ui);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: none;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color .18s var(--ease), border-color .18s var(--ease);
+}
+.article-body .lv-controls button:hover { color: var(--ink); border-color: var(--ink-3); }
+.article-body .lv-controls button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+@media (max-width: 640px) {
+  .article-body .lv { grid-template-columns: 100px 1fr; }
+  .article-body .lv-note { grid-column: 1 / -1; }
+}
 }

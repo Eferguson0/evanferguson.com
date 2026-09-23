@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supahealth — Evan Ferguson</title>
+  <meta name="description" content="Real-time body composition management.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://evanferguson.com/supahealth/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://evanferguson.com/supahealth/">
+  <meta property="og:title" content="Supahealth">
+  <meta property="og:description" content="Real-time body composition management.">
+  <meta property="og:image" content="https://evanferguson.com/assets/previews/supahealth.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Supahealth">
+  <meta name="twitter:description" content="Real-time body composition management.">
+  <meta name="twitter:image" content="https://evanferguson.com/assets/previews/supahealth.webp">
+
+  <meta name="theme-color" content="#F6F4F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16161A" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+  <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◑</button>
+
+  <header class="site-head">
+    <a href="/">Evan Ferguson</a>
+  </header>
+
+  <main>
+    <article class="article">
+  <div class="shell-claude">
+    <a class="backlink" href="/">Home</a>
+    <div class="hdr-a">
+      <span class="pill">2025–2026</span>
+      <h1 class="result-head">Getting lean through real-time data</h1>
+      <p class="project-name">Supahealth</p>
+    </div>
+    <div class="preview"><img src="/assets/previews/supahealth.webp" alt="Supahealth" decoding="async"></div>
+    <div class="kpis">
+      <dl class="kpi-meta">
+        <div class="row"><dt>Team:</dt><dd>2: myself, DevOps engineer</dd></div>
+        <div class="row"><dt>Role:</dt><dd>Full-stack engineer</dd></div>
+        <div class="row"><dt>Stack:</dt><dd>Swift · Python · FastAPI · PostgreSQL · Data modeling · Context engineering · Data ingestion · PostHog · Claude Code</dd></div>
+      </dl>
+      <div class="kpi">
+        <h3>15 users</h3>
+        <p>on TestFlight</p>
+      </div>
+      <div class="kpi">
+        <h3>6 agents</h3>
+        <p>to streamline development</p>
+      </div>
+    </div>
+    <div class="article-body">
+
+      <h2>The problem</h2>
+
+
+      <p>I built this app to help me more easily manage my body fat percentage. I tried 
+  several calories tracking apps initially (MyFitnessPal, CalAI), but despite hitting the daily target I 
+  still hadn't seen any progress after ~6 weeks. I realized this was because my targets were off and I didn't 
+  have an accurate count of calories I was burning on a given day (which varied, while goals were static). I decided to learn about 
+  body composition management (ie. safe/optimal targets) to understand appropriate surplus/deficit, 
+  and then build an app that: 1 - gave you targets based on your biometrics, and 2 - provided a 
+  responsive calories target that flexed based on your activity level for the day.</p>
+
+  <h2>The solution</h2>
+
+<p>In v1, I worked with Chatgpt to build a very simple monolith webapp version (everything lived in Supabase). 
+  This was a cool POC, but overall pretty janky, so I recruited my SWE friend help develop the foundation for a real app: 
+  a FastAPI + Postgres backend. After he gave me the basic program, I spent two weeks working with Cursor 
+  to understand the entire flow from client json to executing CRUD commands. 
+  Once I was familiar, I started developing the business logic and Swift frontend.</p>
+
+<p>To get an accurate calorie count, the backend ingested data from several real-time data streams (iPhone, Apple Watch, 
+  Withings Scale), which was paired with physical activity level (PAL) multipliers.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 980 580" role="img" aria-label="How Supahealth calculates the daily target. The plan, refreshed from the last 14 days, turns your profile, activity level and goal into a net goal plus protein and fat targets. During the day, resting burn, workouts and walking add up to calories burned; the target is calories burned plus the net goal, and carbs take whatever is left after protein and fat.">
+    <defs>
+      <marker id="dm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="dm-head"/>
+      </marker>
+    </defs>
+
+    <!-- PLAN -->
+    <text class="dm-label" x="20" y="28">Plan · refreshed from the last 14 days</text>
+
+    <rect class="dm-tbl" x="20" y="44" width="208" height="120" rx="10"/>
+    <text class="dm-name" x="36" y="72">Profile</text>
+    <text class="dm-desc" x="36" y="96">height, age, sex, weight</text>
+    <text class="dm-desc" x="36" y="114">→ BMR (Mifflin–St Jeor)</text>
+
+    <rect class="dm-job" x="266" y="44" width="208" height="120" rx="10"/>
+    <text class="dm-name" x="282" y="72">Activity level</text>
+    <text class="dm-desc" x="282" y="96">set by the goal's pace,</text>
+    <text class="dm-desc" x="282" y="114">±1 level by average steps</text>
+    <text class="dm-desc" x="282" y="132">(under 8k down, over 12k up)</text>
+    <text class="dm-desc dm-em" x="282" y="152">BMR × PAL = TDEE</text>
+
+    <rect class="dm-tbl" x="512" y="44" width="208" height="120" rx="10"/>
+    <text class="dm-name" x="528" y="72">Goal rules</text>
+    <text class="dm-desc" x="528" y="96">pace, % of weight per week</text>
+    <text class="dm-desc" x="528" y="114">safety floors and caps</text>
+    <text class="dm-desc" x="528" y="132">protein rule</text>
+
+    <rect class="dm-tbl dm-out" x="758" y="44" width="208" height="120" rx="10"/>
+    <text class="dm-name" x="774" y="72">Plan</text>
+    <text class="dm-desc" x="774" y="96">net goal (deficit or surplus)</text>
+    <text class="dm-desc" x="774" y="114">protein target</text>
+    <text class="dm-desc" x="774" y="132">fat target</text>
+
+    <!-- TODAY -->
+    <text class="dm-label" x="20" y="226">Today · live, hour by hour</text>
+
+    <rect class="dm-tbl" x="20" y="242" width="208" height="80" rx="10"/>
+    <text class="dm-name" x="36" y="268">Resting burn</text>
+    <text class="dm-desc" x="36" y="290">30-day average, by the hour,</text>
+    <text class="dm-desc" x="36" y="308">counted to midnight*</text>
+
+    <rect class="dm-tbl" x="20" y="336" width="208" height="62" rx="10"/>
+    <text class="dm-name" x="36" y="362">Workouts</text>
+    <text class="dm-desc" x="36" y="384">from Apple Watch</text>
+
+    <rect class="dm-tbl" x="20" y="412" width="208" height="80" rx="10"/>
+    <text class="dm-name" x="36" y="438">Walking</text>
+    <text class="dm-desc" x="36" y="460">outside workouts:</text>
+    <text class="dm-desc" x="36" y="478">miles × body weight × rate</text>
+
+    <rect class="dm-job" x="266" y="328" width="208" height="90" rx="10"/>
+    <text class="dm-name" x="282" y="356">Burned today</text>
+    <text class="dm-desc" x="282" y="380">resting + workouts</text>
+    <text class="dm-desc" x="282" y="398">+ walking</text>
+
+    <rect class="dm-job" x="512" y="328" width="208" height="90" rx="10"/>
+    <text class="dm-name" x="528" y="356">Today's target</text>
+    <text class="dm-desc dm-em" x="528" y="380">burned today + net goal</text>
+    <text class="dm-desc" x="528" y="398">moves as you burn more</text>
+
+    <rect class="dm-tbl dm-out" x="758" y="328" width="208" height="90" rx="10"/>
+    <text class="dm-name" x="774" y="356">Carbs</text>
+    <text class="dm-desc dm-em" x="774" y="380">(target − 4×protein</text>
+    <text class="dm-desc dm-em" x="790" y="398">− 9×fat) ÷ 4</text>
+
+    <!-- flows -->
+    <g class="dm-line" marker-end="url(#dm-arrow)">
+      <line x1="228" y1="104" x2="264" y2="104"/>
+      <line x1="474" y1="104" x2="510" y2="104"/>
+      <line x1="720" y1="104" x2="756" y2="104"/>
+      <line x1="228" y1="282" x2="264" y2="352"/>
+      <line x1="228" y1="367" x2="264" y2="373"/>
+      <line x1="228" y1="452" x2="264" y2="394"/>
+      <line x1="474" y1="373" x2="510" y2="373"/>
+      <line x1="720" y1="373" x2="756" y2="373"/>
+      <line x1="862" y1="164" x2="862" y2="326"/>
+      <path d="M862,250 H616 V326"/>
+    </g>
+    <text class="dm-note" x="739" y="242" text-anchor="middle">net goal</text>
+    <text class="dm-note" x="872" y="292">protein, fat</text>
+
+    <!-- footnote + legend -->
+    <text class="dm-note" x="20" y="520">* with minimum burn on (the default). Off, only what has actually been burned so far.</text>
+    <rect class="dm-tbl" x="20" y="548" width="16" height="16" rx="4"/>
+    <text class="dm-desc" x="44" y="561">input</text>
+    <rect class="dm-job" x="110" y="548" width="16" height="16" rx="4"/>
+    <text class="dm-desc" x="134" y="561">calculation</text>
+    <rect class="dm-tbl dm-out" x="236" y="548" width="16" height="16" rx="4"/>
+    <text class="dm-desc" x="260" y="561">result</text>
+  </svg>
+  <figcaption>How the daily target is calculated</figcaption>
+</figure>
+
+<p>On the nutrition side, information was 
+  seeded from external datasets such as USDA's public food database, and Open Food Facts (for barcode scanning). 
+  For support, I developed a chat feature which queried & seeded long term data (ie. goals/progress) 
+  and short term data (weekly fitness/nutrition) to give the LLM appropriate context for any questions the user may ask. 
+  Eventually I had the frontend live on Testflight, the backend on AWS and 15 users beta testing.</p>
+
+
+<h2>Agents</h2>
+
+<p>Once I began beta testing, I configured several agents to speed up product development, backed by PostHog analytics:
+
+  <ul>
+  <li><strong>Database seeding agents:</strong> Two agents, each with access to Tavily. One focused on seeding foods from restaurants, the other CPG products.
+    I gave each agent access to a list in Linear, and each night they would research companies on their respective lists and populate the global database.</li>
+  <li><strong>Analytics agent:</strong> One agent, focusing on reviewing PostHog analytics and suggesting improvements in user flow or potential bugs. 
+    This agent would create Linear tickets based on what it found.</li>
+  <li><strong>User activity agent:</strong> This agent would review PostHog analytics specifically for user engagement metrics, helping to identify opportunities for
+  improving the user onboarding/first 7-day experience.</li>
+  <li><strong>Automation agent:</strong> This agents purpose was to review actions taken by me over the past several days, and identify repetitive tasks 
+    I was completing that could be automated.</li>
+  <li><strong>Founder agent:</strong> This agents purpose was to review actions taken by me over various 
+    periods of time, and give me objective feedback on whether I was moving the needle or focusing on low-value tasks.</li>
+</ul>
+
+        </div>
+    <a class="cta" href="https://supahealth-landing.onrender.com" rel="noopener">Visit Supahealth</a>
+  </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="colophon">
+        <span class="label">© 2026 Evan Ferguson</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/theme.js"></script>
+  <script src="/assets/zoom.js"></script>
+</body>
+</html>

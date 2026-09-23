@@ -5,6 +5,11 @@
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return ""; } };
+  // A project with a slug owns a page, so its title and preview point there and
+  // the live site is left for that page to link. Without one, both go straight out.
+  const href = (p) => (p.slug ? `/${p.slug}/` : p.url);
+  // Marks a title that stays on the site, so it can carry a different arrow.
+  const linkClass = (p) => (p.slug ? ' class="to-page"' : "");
 
   /* ------------------------------------------------------------ masthead */
   $("mastName").textContent = SITE.name;
@@ -21,19 +26,6 @@
 
   /* ------------------------------------------------------------ timeline */
 
-  // Labelled record: description, team, result, skills.
-  const recordRows = (p) => {
-    const rows = [
-      ["Team", p.team && esc(p.team)],
-      ["Result", p.result && esc(p.result)],
-      ["Skills", p.skills && p.skills.map(esc).join(" \u00b7 ")],
-    ].filter(([, v]) => v);
-    return `<p class="summary">${esc(p.description)}</p>` + (rows.length
-      ? `<dl class="rec">${rows
-          .map(([k, v]) => `<dt class="label">${k}</dt><dd>${v}</dd>`).join("")}</dl>`
-      : "");
-  };
-
   // Rail shows the start year, with the end year (or "now") beneath it when
   // the project didn't begin and end in the same year.
   const railLines = (p) => {
@@ -48,8 +40,9 @@
       ? `<img src="${esc(p.preview)}" alt="${esc(p.title)}" loading="lazy" decoding="async">`
       : `<span>${esc(host(p.url) || "no preview yet")}</span>`;
     const cls = `preview${p.preview ? "" : " empty"}`;
-    return p.url
-      ? `<a class="${cls}" href="${esc(p.url)}" rel="noopener" aria-label="${esc(p.title)}">${inner}</a>`
+    const to = href(p);
+    return to
+      ? `<a class="${cls}" href="${esc(to)}" rel="noopener" aria-label="${esc(p.title)}">${inner}</a>`
       : `<div class="${cls}">${inner}</div>`;
   };
 
@@ -68,14 +61,14 @@
       : `Since ${startYear}`;
     $("current").innerHTML = `
       <div class="current-meta">
-        <span class="label">Currently</span>
+        <span class="label">Current</span>
         <span class="current-dates">${dates}</span>
       </div>
-      <h2>${featured.url
-        ? `<a href="${esc(featured.url)}" rel="noopener">${esc(featured.title)}</a>`
+      <h2>${href(featured)
+        ? `<a${linkClass(featured)} href="${esc(href(featured))}" rel="noopener">${esc(featured.title)}</a>`
         : esc(featured.title)}</h2>
       ${featured.description
-        ? recordRows(featured)
+        ? `<p class="summary">${esc(featured.description)}</p>`
         : `<p class="summary">${esc(featured.summary)}</p>
            ${featured.value ? `<p class="value">${esc(featured.value)}</p>` : ""}`}
       ${preview(featured)}
@@ -91,11 +84,11 @@
         <div class="entry-year">${railLines(p)
           .map((l, i) => `<span${i ? ' class="to"' : ""}>${l}</span>`).join("")}</div>
         <div>
-          <h2>${p.url
-            ? `<a href="${esc(p.url)}" rel="noopener">${esc(p.title)}</a>`
+          <h2>${href(p)
+            ? `<a${linkClass(p)} href="${esc(href(p))}" rel="noopener">${esc(p.title)}</a>`
             : esc(p.title)}</h2>
           ${p.description
-            ? recordRows(p)
+            ? `<p class="summary">${esc(p.description)}</p>`
             : `<p class="summary">${esc(p.summary)}</p>
                ${p.value ? `<p class="value">${esc(p.value)}</p>` : ""}`}
           ${preview(p)}
@@ -109,17 +102,4 @@
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
   }), { rootMargin: "0px 0px -6% 0px", threshold: 0.05 });
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-
-  /* --------------------------------------------------------------- theme */
-  let stored = null;
-  try { stored = localStorage.getItem("theme"); } catch (_) {}
-  if (stored) document.documentElement.setAttribute("data-theme", stored);
-
-  $("themeBtn").addEventListener("click", () => {
-    const sysDark = matchMedia("(prefers-color-scheme: dark)").matches;
-    const cur = document.documentElement.getAttribute("data-theme") || (sysDark ? "dark" : "light");
-    const next = cur === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("theme", next); } catch (_) {}
-  });
 })();

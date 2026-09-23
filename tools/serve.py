@@ -5,8 +5,9 @@ python -m http.server sends no Cache-Control, so browsers apply heuristic
 caching and keep serving a stale projects.js after an edit. This sends
 no-store on everything so a plain reload always shows current files.
 
-    ./tools/serve.py [port]
+    ./tools/serve.py [port]      (falls back to $PORT, then 8412)
 """
+import os
 import sys
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -24,7 +25,7 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8412
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else int(os.environ.get("PORT", 8412))
     root = __file__.rsplit("/", 2)[0]
     handler = partial(NoCacheHandler, directory=root)
     print(f"serving {root} on http://localhost:{port} (no-cache)")
