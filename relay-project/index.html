@@ -94,10 +94,12 @@
 <h2>Agents</h2>
 
 
-<p>Relay had several specialized agents to process/draft information, and learn the user's writing style. Each was a CrewAI agent with a single task, run in sequence, with the app deciding what came next rather than the framework:
+<p>Relay broke the work into small, single-purpose steps: understanding the incoming message, drafting
+  the reply, and learning the user's writing style. Each step was a CrewAI agent with one task. They ran
+  in sequence, and the app, not the framework, decided what came next:</p>
 
   <ul>
-  <li><strong>Message purpose:</strong> Before drafting, a model call classified the intent of the received message 
+  <li><strong>Message purpose agent:</strong> Before drafting, this agent classified the intent of the received message 
     (question, update, request, agenda, etc.), so the draft would better match the situation.</li>
   <li><strong>Slack agents:</strong> Two agents. The first reviewed the content of a message and suggested the most 
     appropriate Slack channel for it. The second drafted the Slack message from the provided context.</li>
@@ -105,7 +107,7 @@
     and the third to draft the actual email content.</li>
   <li><strong>Message refinement agent:</strong> This agent would help users revise a draft, using the original 
     context and user feedback to make targeted changes without rewriting everything from scratch or losing context.</li>
-  <li><strong>Style learning:</strong> Once a user finalized a message, a model call analyzed its purpose, tone, 
+  <li><strong>Style learning agent:</strong> Once a user finalized a message, this agent analyzed its purpose, tone, 
     structure, and writing patterns to gradually develop a better understanding of the user's communication style.</li>
 
 </ul>
