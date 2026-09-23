@@ -94,9 +94,7 @@
 <h2>Agents</h2>
 
 
-<p>Relay broke the work into small, single-purpose steps: understanding the incoming message, drafting
-  the reply, and learning the user's writing style. Each step was a CrewAI agent with one task. They ran
-  in sequence, and the app, not the framework, decided what came next:</p>
+<p>Relay had several specialized agents to process/draft information, and learn the user's writing style. Each was a CrewAI agent with a single task, run in sequence:</p>
 
   <ul>
   <li><strong>Message purpose agent:</strong> Before drafting, this agent classified the intent of the received message 
