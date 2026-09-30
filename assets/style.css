@@ -1012,3 +1012,34 @@ dialog.zoom svg.brand { background: none; padding: 0; border-radius: 16px; }
 .article-body .uc-group li { font-size: 15px; color: var(--ink-2); margin-bottom: 0.5em; }
 .article-body .uc-group .uc-meta { display: block; font: 400 12px var(--font-ui); color: var(--ink-4); margin-top: 1px; }
 .article-body .uc-group .uc-meta a { color: var(--ink-3); border-bottom-color: var(--rule-strong); }
+
+/* Revenue columns in Business model disruption on /benchmarking-ai-adoption/.
+   Column height is revenue: cost at the base, margin on top. Proportions are
+   illustrative. */
+.article-body .rev-bars { margin: 1.4em 0 1.8em; }
+.article-body .rb-cost { background: var(--ink-4); }
+.article-body .rb-margin { background: var(--accent); }
+.article-body .rc-chart { display: flex; align-items: stretch; justify-content: center; gap: 10px; margin-top: 10px; }
+.article-body .rc-axis {
+  writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; align-self: center;
+  font: 500 11px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);
+}
+.article-body .rc-main { display: flex; flex-direction: column; align-items: center; }
+.article-body .rev-bars .rb-title { margin: 0 0 26px; text-align: center; }
+.article-body .rc-plot {
+  display: flex; align-items: flex-end; gap: 28px; height: 160px; padding: 0 18px;
+  border-left: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong);
+  margin-bottom: 22px; position: relative;
+}
+.article-body .rc-col { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+.article-body .rc-stack { width: 56px; display: flex; flex-direction: column; border-radius: 3px 3px 0 0; overflow: hidden; }
+.article-body .rc-stack > span { display: block; width: 100%; }
+.article-body .rc-lab {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 6px;
+  font: 400 12px var(--font-ui); color: var(--ink-3); white-space: nowrap;
+}
+.article-body .rb-legend {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; margin-top: 4px;
+  font: 400 12px var(--font-ui); color: var(--ink-3);
+}
+.article-body .rb-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
