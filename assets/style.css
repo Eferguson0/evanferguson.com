@@ -839,4 +839,176 @@ dialog.zoom svg.brand { background: none; padding: 0; border-radius: 16px; }
   .article-body .lv { grid-template-columns: 100px 1fr; }
   .article-body .lv-note { grid-column: 1 / -1; }
 }
+
+/* Adoption-vs-exposure scatter on /ai-maturity-mapping/, drawn by
+   assets/maturity.js. Without the script the firm list shows in full.
+   Seven industry hues, validated in both themes; in a scatter some pairs
+   sit close under colour-blindness, so the legend highlight, hover label
+   and panel all name the industry too. */
+.article-body {
+  --mm-finance: #2a78d6; --mm-manufacturing: #eb6834; --mm-real-estate: #1baf7a;
+  --mm-energy: #eda100;  --mm-retail: #e87ba4;         --mm-nonprofit: #008300;
+  --mm-technology: #4a3aa7; --mm-construction: #e34948;
 }
+.article-body .maturity { margin: 2.6em 0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .article-body {
+    --mm-finance: #3987e5; --mm-manufacturing: #d95926; --mm-real-estate: #199e70;
+    --mm-energy: #c98500;  --mm-retail: #d55181;         --mm-nonprofit: #008300;
+    --mm-technology: #9085e9; --mm-construction: #e66767;
+  }
+}
+:root[data-theme="dark"] .article-body {
+  --mm-finance: #3987e5; --mm-manufacturing: #d95926; --mm-real-estate: #199e70;
+  --mm-energy: #c98500;  --mm-retail: #d55181;         --mm-nonprofit: #008300;
+  --mm-technology: #9085e9; --mm-construction: #e66767;
+}
+.article-body [data-industry="finance"]       { --c: var(--mm-finance); }
+.article-body [data-industry="manufacturing"] { --c: var(--mm-manufacturing); }
+.article-body [data-industry="real-estate"]   { --c: var(--mm-real-estate); }
+.article-body [data-industry="energy"]        { --c: var(--mm-energy); }
+.article-body [data-industry="retail"]        { --c: var(--mm-retail); }
+.article-body [data-industry="nonprofit"]     { --c: var(--mm-nonprofit); }
+.article-body [data-industry="technology"]    { --c: var(--mm-technology); }
+.article-body [data-industry="construction"]  { --c: var(--mm-construction); }
+.article-body [data-industry="other"]         { --c: var(--ink-3); }
+
+.article-body .mm-swatch {
+  display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--c); margin-right: 7px; vertical-align: 0.05em;
+}
+.article-body .mm-legend { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-bottom: 14px; }
+.article-body .mm-legend span { font: 400 12px var(--font-ui); color: var(--ink-3); }
+.article-body .mm-legend button {
+  font: 500 11px var(--font-ui); letter-spacing: 0.04em; color: var(--ink-2);
+  background: none; border: 1px solid var(--rule-strong); border-radius: 999px;
+  padding: 5px 11px; cursor: pointer;
+  transition: color .18s var(--ease), border-color .18s var(--ease);
+}
+.article-body .mm-legend button:hover { color: var(--ink); border-color: var(--ink-3); }
+.article-body .mm-legend button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
+
+.article-body .mm-plot { position: relative; max-width: 480px; margin: 0 auto; }
+.article-body .mm-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.mm-grid line { stroke: var(--rule); stroke-width: 1; }
+.mm-grid line.mid { stroke: var(--rule-strong); stroke-dasharray: 3 3; }
+.mm-grid .frame { fill: none; stroke: var(--rule-strong); stroke-width: 1; }
+.mm-grid .tick { font: 400 11px var(--font-ui); fill: var(--ink-4); font-variant-numeric: tabular-nums; }
+.mm-grid .axis { font: 500 11px var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; fill: var(--ink-3); }
+.mm-quad text { font: 500 10px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ink-4); }
+
+.mm-dot { cursor: pointer; outline: none; transition: opacity .2s var(--ease); }
+.mm-dot .hit { fill: transparent; }
+.mm-dot .mark { fill: var(--c); stroke: var(--paper); stroke-width: 2; transition: r .15s var(--ease); }
+.mm-dot:hover .mark, .mm-dot:focus-visible .mark { r: 8.5; }
+.mm-dot.sel .mark { r: 8.5; stroke: var(--ink); stroke-width: 2; }
+.mm-dot.dim { opacity: 0.15; }
+
+.article-body .mm-tip {
+  position: absolute; transform: translateY(-100%); pointer-events: none;
+  font: 500 12px/1.35 var(--font-ui); color: var(--ink); width: max-content; max-width: 100%;
+  background: var(--paper-raised); border: 1px solid var(--rule-strong);
+  border-radius: 6px; padding: 4px 8px; opacity: 0; transition: opacity .12s;
+}
+.article-body .mm-tip.on { opacity: 1; }
+.article-body .mm-tip.below { transform: none; }
+
+
+.article-body .mm-panel {
+  margin-top: 22px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  padding: 14px 0 18px; min-height: 150px;
+}
+.article-body .mm-nav { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-bottom: 4px; }
+.article-body .mm-nav span { font: 400 11px var(--font-ui); color: var(--ink-4); font-variant-numeric: tabular-nums; min-width: 4.5em; text-align: center; }
+.article-body .mm-nav button {
+  font: 400 18px/1 var(--font-ui); color: var(--ink-3); background: none;
+  border: 1px solid var(--rule-strong); border-radius: 50%; width: 30px; height: 30px;
+  cursor: pointer; padding: 0 0 2px;
+}
+.article-body .mm-nav button:hover { color: var(--ink); border-color: var(--ink-3); }
+.article-body .mm-empty { font: 400 13.5px var(--font-ui); color: var(--ink-3); margin: 0; }
+.article-body .mm-body h3, .article-body .firm h3 { margin: 0 0 2px; }
+.article-body .mm-more { display: inline-block; margin-top: 12px; font: 500 12px var(--font-ui); letter-spacing: 0.02em; }
+.article-body .firm-meta { font: 400 12.5px var(--font-ui); color: var(--ink-3); margin: 0 0 10px; }
+.article-body .firm-scores { display: grid; grid-template-columns: 8.5em 1fr; gap: 10px 14px; margin: 0; }
+.article-body .firm-scores dt { font: 500 11px var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); padding-top: 3px; }
+.article-body .firm-scores dt span { display: block; margin-top: 3px; color: var(--ink); font-size: 13px; letter-spacing: 0; text-transform: none; }
+.article-body .firm-scores dd { margin: 0; font-size: 15px; color: var(--ink-2); }
+.article-body .firm-summary { margin-top: 12px; }
+
+/* Key findings list and the firm profiles on /ai-maturity-mapping/. */
+.article-body .key-findings li { margin-bottom: 0.7em; }
+.article-body .key-findings a { font-weight: 600; }
+.article-body .firm-profiles { margin: 1.2em 0 2.4em; border-bottom: 1px solid var(--rule); }
+.article-body .firm { border-top: 1px solid var(--rule); }
+.article-body .firm summary {
+  list-style: none; cursor: pointer; padding: 14px 28px 12px 0; position: relative;
+}
+.article-body .firm summary::-webkit-details-marker { display: none; }
+.article-body .firm summary::after {
+  content: "+"; position: absolute; right: 2px; top: 13px;
+  font: 300 20px/1 var(--font-ui); color: var(--ink-3);
+}
+.article-body .firm[open] summary::after { content: "–"; }
+.article-body .firm summary h3::before {
+  content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--c); margin-right: 8px; vertical-align: 0.1em;
+}
+.article-body .firm summary .firm-meta { margin: 0; }
+.article-body .firm summary:hover h3 { color: var(--accent); }
+.article-body .firm .firm-scores { padding-bottom: 4px; }
+.article-body .firm .firm-summary { padding-bottom: 16px; }
+.article-body .firm .firm-summary p { color: var(--ink-2); font-size: 16px; margin: 0; }
+.article-body .firm:target summary h3 { color: var(--accent); }
+.article-body .firm-uses { padding-bottom: 18px; }
+.article-body .firm-uses-title {
+  font: 500 11px var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-3); margin: 0 0 6px;
+}
+.article-body .firm-uses ul { margin: 0; padding-left: 1.1em; }
+.article-body .firm-uses li { font-size: 15px; color: var(--ink-2); margin-bottom: 0.45em; }
+.article-body .firm-uses .uc-meta {
+  display: block; font: 400 12px var(--font-ui); color: var(--ink-4); margin-top: 1px;
+}
+
+/* Adoption depth ladder on /ai-maturity-mapping/, drawn by assets/maturity.js
+   from the firm profiles. */
+.article-body .adoption-ladder { margin: 1.4em 0 1.6em; }
+.article-body .al-plot { position: relative; max-width: 560px; margin: 0 auto; }
+.article-body .al-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.al-steps .stair { fill: color-mix(in srgb, var(--accent) 10%, transparent); stroke: var(--ink-3); stroke-width: 1.2; stroke-linejoin: round; }
+.al-steps .base { stroke: var(--rule-strong); stroke-width: 1; }
+.al-labels .level { font: 500 12px var(--font-ui); fill: var(--ink-2); font-variant-numeric: tabular-nums; }
+.al-labels .step { font: 500 9.5px var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; fill: var(--ink-3); }
+.al-dot { cursor: pointer; outline: none; transition: opacity .2s var(--ease); }
+.al-dot.dim { opacity: 0.15; }
+.al-dot .hit { fill: transparent; }
+.al-dot .mark { fill: var(--c); stroke: var(--paper); stroke-width: 2; transition: r .15s var(--ease); }
+.al-dot:hover .mark, .al-dot:focus-visible .mark { r: 8; }
+.article-body .firm-step {
+  font: 500 11px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-3); margin: 26px 0 8px;
+}
+.article-body .firm-step:first-child { margin-top: 0; }
+
+/* Use cases by area on /ai-maturity-mapping/: one collapsible group per
+   category, generated from the sheet's Use cases tab. */
+.article-body .use-cases { margin: 1.2em 0 2.4em; border-bottom: 1px solid var(--rule); }
+.article-body .uc-group { border-top: 1px solid var(--rule); }
+.article-body .uc-group summary {
+  list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 10px;
+  padding: 12px 28px 12px 0; position: relative;
+}
+.article-body .uc-group summary::-webkit-details-marker { display: none; }
+.article-body .uc-group summary::after {
+  content: "+"; position: absolute; right: 2px; top: 11px;
+  font: 300 20px/1 var(--font-ui); color: var(--ink-3);
+}
+.article-body .uc-group[open] summary::after { content: "–"; }
+.article-body .uc-group summary h3 { margin: 0; }
+.article-body .uc-group summary:hover h3 { color: var(--accent); }
+.article-body .uc-count { font: 400 12px var(--font-ui); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.article-body .uc-group ul { margin: 0 0 16px; padding-left: 1.1em; }
+.article-body .uc-group li { font-size: 15px; color: var(--ink-2); margin-bottom: 0.5em; }
+.article-body .uc-group .uc-meta { display: block; font: 400 12px var(--font-ui); color: var(--ink-4); margin-top: 1px; }
+.article-body .uc-group .uc-meta a { color: var(--ink-3); border-bottom-color: var(--rule-strong); }
