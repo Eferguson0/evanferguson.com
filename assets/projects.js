@@ -84,10 +84,10 @@ const PROJECTS = [
     // `feature: true` lifts an entry out of the timeline into its own block
     // above it. Remove this line and it drops back in as a normal entry.
     feature: true,
-    title: "Mapping AI Adoption",
-    slug: "ai-maturity-mapping",
+    title: "Benchmarking AI Adoption",
+    slug: "benchmarking-ai-adoption",
     url: "https://fergusonappliedai.com",
     preview: "assets/previews/faai.webp",
-    description: "Charting AI maturity across industries & segments.",
+    description: "Charting maturity across industries & segments.",
   },
 ];

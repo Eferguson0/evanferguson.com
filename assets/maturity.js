@@ -1,4 +1,4 @@
-/* Scatter charts on /ai-maturity-mapping/. Every firm is one
+/* Scatter charts on /benchmarking-ai-adoption/. Every firm is one
    <details class="firm"> under "Firm profiles", carrying its industry and
    scores as data attributes; each <figure class="maturity"> names the two
    it plots (data-x, data-y) and its corner labels (data-corners, TL|TR|BL|BR).
