@@ -77,11 +77,11 @@
 
   <h2>The solution</h2>
 
-<p>In v1, I worked with Chatgpt to build a very simple monolith webapp version (everything lived in Supabase). 
-  This was a cool POC, but overall pretty janky, so I recruited my SWE friend help develop the foundation for a real app: 
-  a FastAPI + Postgres backend. After he gave me the basic program, I spent two weeks working with Cursor 
-  to understand the entire flow from client json to executing CRUD commands. 
-  Once I was familiar, I started developing the business logic and Swift frontend.</p>
+<p>The first version was a simple monolithic web app built with ChatGPT, with all data and logic in Supabase.
+  It worked as a proof of concept but wasn't stable enough to build on, so a DevOps engineer joined to set up the
+  foundation for a production app: a FastAPI and PostgreSQL backend. The next two weeks went into learning the full
+  request flow, from client JSON to database CRUD operations, using Cursor to explain each line of code. With that in
+  place, development moved to the business logic and the Swift frontend.</p>
 
 <p>To get an accurate calorie count, the backend ingested data from several real-time data streams (iPhone, Apple Watch, 
   Withings Scale), which was paired with physical activity level (PAL) multipliers.</p>
