@@ -83,8 +83,8 @@
   request flow, from client JSON to database CRUD operations, using Cursor to explain each line of code. With that in
   place, development moved to the business logic and the Swift frontend.</p>
 
-<p>To get an accurate calorie count, the backend ingested data from several real-time data streams (iPhone, Apple Watch, 
-  Withings Scale), which was paired with physical activity level (PAL) multipliers.</p>
+<p>To get an accurate calorie count, the backend ingests several real-time data streams (iPhone, Apple Watch,
+  Withings scale) and pairs them with physical activity level (PAL) multipliers.</p>
 
 <figure class="diagram">
   <svg viewBox="0 0 980 580" role="img" aria-label="How Supahealth calculates the daily target. The plan, refreshed from the last 14 days, turns your profile, activity level and goal into a net goal plus protein and fat targets. During the day, resting burn, workouts and walking add up to calories burned; the target is calories burned plus the net goal, and carbs take whatever is left after protein and fat.">
@@ -181,11 +181,10 @@
   <figcaption>How the daily target is calculated</figcaption>
 </figure>
 
-<p>On the nutrition side, information was 
-  seeded from external datasets such as USDA's public food database, and Open Food Facts (for barcode scanning). 
-  For support, I developed a chat feature which queried & seeded long term data (ie. goals/progress) 
-  and short term data (weekly fitness/nutrition) to give the LLM appropriate context for any questions the user may ask. 
-  Eventually I had the frontend live on Testflight, the backend on AWS and 15 users beta testing.</p>
+<p>On the nutrition side, food data was seeded from external datasets, including the USDA's public food database
+  and Open Food Facts for barcode scanning. An in-app assistant pulls in long-term data (goals and progress) and
+  short-term data (the past week's fitness and nutrition) so the LLM has the right context for any question a user
+  asks. The frontend shipped on TestFlight, the backend on AWS, and 15 users joined the beta.</p>
 
 
 <h2>Agents</h2>
