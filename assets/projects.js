@@ -47,8 +47,9 @@ const PROJECTS = [
     preview: "assets/previews/flyerz.webp",
     description: "Image & video-based restaurant discovery.",
   },
-  // Hidden 2026-10-07: work for current employer. The /nevada/ page was
-  // removed too; restore both from git (nevada/index.html) to bring it back.
+  // Hidden 2026-10-07: work for current employer. /nevada/ still exists but
+  // is unlinked and noindexed; uncomment this and drop that page's robots
+  // meta to bring it back.
   // {
   //   // Kickoff 08/08/2023; Phase 1 closeout report 07/18/24, meeting 07/25/24.
   //   // (Contract itself ran to 12/31/2026 — this entry covers the Phase 1 build.)
