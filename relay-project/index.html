@@ -63,12 +63,13 @@
       <h2>The problem</h2>
 
 
-      <p>Customer Success roles spend a significant share of the day relaying information: reading an incoming request,
-        deciding what needs to happen, and drafting a message to the right person on the right channel. LLMs handle
-        summarizing and drafting well, but the work still happened inside chat apps, with context copied in by hand for
-        every message. The goal of this project was to build a simple interface that takes a received message, adds
-        context on the actions it requires, and drafts a reply for a chosen channel, freeing up time for higher-value work
-        like strategy.</p>
+      <p>Customer Success roles spend a significant portion of the day relaying information: reading an incoming request,
+        deciding what needs to happen, and drafting a message to the right person on the right channel. A client email
+        asking for a fix, for example, has to be summarized and forwarded to engineering in Slack with the key details
+        intact. LLMs handle summarizing and drafting well, but iterating on a draft inside LLM chat apps is clunky, and
+        context has to be copied in by hand for every message. The goal of this project was to build a simple interface
+        that takes a received message, seeds context on the actions it requires, and drafts the message for a chosen
+        channel, freeing up time for higher-value work like strategy.</p>
 
   <h2>The solution</h2>
 
