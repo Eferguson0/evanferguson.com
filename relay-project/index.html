@@ -73,24 +73,22 @@
 
   <h2>The solution</h2>
 
-<p>Relay essentially allowed content drafting iteration to move outside of the LLM apps and into an interface where the user could more easily iterate/edit the message.
-  Relay had an interface where the user pasted the source message/context (email, Slack, Google Docs, etc.), added relevant context, and select the 
-  desired channel. For example, if a client emailed me with a request, 
-  I could note 'forward to engineering and include key fields', and Relay would draft it to #engineering.
-  The goal was to remove the low-value first-draft work and accelerate getting the final draft sent.</p>
+<p>Relay moved drafting out of LLM chat apps and into an interface built for editing. The user pasted the source
+  message (email, Slack, Google Docs, etc.), added instructions, and selected a channel. Given a client email with a
+  request, for example, a note like "forward to engineering and include key fields" produced a draft for
+  #engineering, ready to edit and send.</p>
 
 <figure>
   <img src="/relay/forwarding.webp" alt="Relay's new-draft screen: a client email pasted as context, Slack selected, and the instruction 'Ask engineering to send asap'" loading="lazy" decoding="async">
 </figure>
 
-<p>To try to avoid AI slop, I implemented a lightweight memory system. Whenever a user copied a draft, 
-  Relay treated that as a proxy for approval and used GPT-4 to log its purpose, tone, structure, and 
-  other stylistic patterns in Supabase. When drafting a similar message later, an agent would pull the three 
-  most recent messages with the same type and purpose, create a compact style profile from them, and add 
-  it back into the prompt.</p>
+<p>To keep drafts from sounding generic, Relay used a lightweight memory system. Copying a draft counted as
+  approval: GPT-4 logged its purpose, tone, structure, and other stylistic patterns in Supabase. When drafting a
+  similar message later, an agent pulled the three most recent messages with the same type and purpose, built a
+  compact style profile from them, and added it to the prompt.</p>
 
-<p>By the time I finished the MVP, Anthropic had announced MCP. I found more value in the flexibility of 
-  MCP-based workflows than continuing to invest in Relay’s editable UI.</p>
+<p>By the time the MVP was finished, Anthropic had announced MCP. MCP-based workflows offered more flexibility than
+  Relay’s editable UI, so further investment in Relay ended there.</p>
 
 
 
