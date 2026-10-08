@@ -51,7 +51,7 @@
         <div class="row"><dt>Stack:</dt><dd>Python · Flask · CrewAI · Anthropic API · OpenAI API · Agent memory · Supabase · Cursor</dd></div>
       </dl>
       <div class="kpi">
-        <h3>6 agents</h3>
+        <h3>8 agents</h3>
         <p>channel suggestion, recipient lookup, subject lines, drafting and refinement</p>
       </div>
       <div class="kpi">
@@ -96,23 +96,25 @@
 <h2>Agents</h2>
 
 
-<p>Relay had several specialized agents to process/draft information, and learn the user's writing style. Each was a CrewAI agent with a single task, run in sequence:</p>
+<p>Relay used several specialized agents to process and draft messages and to learn the user's writing style. Each was a CrewAI agent with a single task, run in sequence:</p>
 
   <ul>
-  <li><strong>Message purpose agent:</strong> Before drafting, this agent classified the intent of the received message 
-    (question, update, request, agenda, etc.), so the draft would better match the situation.</li>
-  <li><strong>Slack agents:</strong> Two agents. The first reviewed the content of a message and suggested the most 
-    appropriate Slack channel for it. The second drafted the Slack message from the provided context.</li>
-  <li><strong>Email agents:</strong> Three agents. The first to identify the appropriate recipient's email, the second to write a concise subject line, 
-    and the third to draft the actual email content.</li>
-  <li><strong>Message refinement agent:</strong> This agent would help users revise a draft, using the original 
-    context and user feedback to make targeted changes without rewriting everything from scratch or losing context.</li>
-  <li><strong>Style learning agent:</strong> Once a user finalized a message, this agent analyzed its purpose, tone, 
-    structure, and writing patterns to gradually develop a better understanding of the user's communication style.</li>
+  <li><strong>Message purpose agent:</strong> Before drafting, classified the intent of the received message
+    (question, update, request, agenda, etc.) so the draft matched the situation.</li>
+  <li><strong>Slack agents:</strong> Two agents. The first suggested the most appropriate Slack channel based on the
+    message content; the second drafted the Slack message from the provided context.</li>
+  <li><strong>Email agents:</strong> Three agents. The first identified the recipient's email address, the second wrote
+    a concise subject line, and the third drafted the email body.</li>
+  <li><strong>Message refinement agent:</strong> Revised drafts using the original context and the user's feedback,
+    making targeted changes without rewriting from scratch or losing context.</li>
+  <li><strong>Style learning agent:</strong> Once a user finalized a message, analyzed its purpose, tone, structure, and
+    writing patterns to build an understanding of the user's communication style over time.</li>
 
 </ul>
 
-<p>I opted to keep orchestration in the form of selecting the desired channel in the UI, rather than having a crew review and pass off. Implementing a crew would have been a cool UX, but slower and overkill.</p>
+<p>Orchestration stayed in the UI: the user selected the channel, rather than a crew of agents reviewing the message
+  and handing it off. A crew would have offered a more novel experience but added latency and complexity the use case
+  didn't need.</p>
         </div>
     <a class="cta" href="/relay/" rel="noopener">Prototype Landing Page</a>
   </div>
